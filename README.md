@@ -8,18 +8,71 @@
 
 # Installation :wrench:
 
-1. Clone this repo in `git clone https://github.com/imranhsayed/twentynineteen-frontity-theme` in frontity app's package directory.
-2. Add the theme package to the dependencies in package.json of root of your frontity app.
+## 1.For new project
+
+### a. By cloning this project.
+1. Clone this repo in `git clone https://github.com/imranhsayed/frontity-twentynineteen` in frontity app's package directory.
+2. `cd frontity-twentynineteen`
+3. Add the theme package to the dependencies in package.json of root of your project.
 ```ruby
   "dependencies": {
-    "@frontity/mars-theme": "./packages/mars-theme",
-    "@frontity/twentynineteen-theme": "./packages/twentynineteen-frontity-theme"
+    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
   }
 ```
+4. Add the package name to the `frontity-settings.js`
+```ruby
+  "packages": [
+    {
+      "name": "@frontity/twentynineteen-theme",
+```
 
-2. Now cd directory your frontity's app's root and run `npm install @frontity/twentynineteen-theme` 
-3. Now run this in the root of your app `npx frontity dev`
+5. Now run the following command from the root of your project
+ `npm install && npx frontity dev`
+ 
+6. Your site will now be available at `http://localhost:3000/`
+
+### a. Using Command Line.
+
+1. `npx frontity create my-app && cd my-app`
+2. `cd packages`
+3. `npm install @frontity/twentynineteen-theme`
+4. Add the theme package to the dependencies in package.json of the root of your project.
+```ruby
+  "dependencies": {
+    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
+  }
+```
+5. Add the package name to the `frontity-settings.js`
+```ruby
+  "packages": [
+    {
+      "name": "@frontity/twentynineteen-theme",
+```
+6.`npx frontity dev` ( from the root of your project )
+
+## 2.For existing project
+
+1. Add the theme package to the dependencies in package.json of root of your project.
+```ruby
+  "dependencies": {
+    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
+  }
+   ```
+   
+2. `cd packages`
+
+3. `npm install @frontity/twentynineteen-theme`
+
+4. Add the package name to the `frontity-settings.js`
+```ruby
+  "packages": [
+    {
+      "name": "@frontity/twentynineteen-theme",
+```
+3. `npx frontity dev` ( from the root of your project )
+
 4. Your site will be available at `http://localhost:3000/`
+
 
 ## Instructions :clipboard:
 
@@ -39,6 +92,6 @@ Please follow the README for individual repositories
 
 ## License :scroll:
 
-[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
 
-- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- **[GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)**
