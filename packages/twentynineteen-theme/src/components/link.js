@@ -1,5 +1,5 @@
 import React from "react";
-import { connect } from "frontity";
+import { connect, styled } from "frontity";
 
 const Link = ({ actions, link, className, children }) => {
   const onClick = event => {
@@ -13,10 +13,16 @@ const Link = ({ actions, link, className, children }) => {
   };
 
   return (
-    <a href={link} onClick={onClick} className={className}>
+    <LinkEl href={link} onClick={onClick} className={className}>
       {children}
-    </a>
+    </LinkEl>
   );
 };
+
+const LinkEl = styled.a`
+	&:focus {
+	outline: none;
+	}
+`;
 
 export default connect(Link);

@@ -6,7 +6,7 @@
 
 ![](demo.gif)
 
-# Installation :wrench:
+## Installation :wrench:
 
 1. Clone this repo in `git clone https://github.com/imranhsayed/twentynineteen-frontity-theme` in frontity app's package directory.
 2. Add the theme package to the dependencies in package.json of root of your frontity app.

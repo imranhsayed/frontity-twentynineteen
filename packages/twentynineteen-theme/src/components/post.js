@@ -3,6 +3,8 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
 import FeaturedMedia from "./featured-media";
+import AuthorIcon from "./icons/author-icon";
+import DateIcon from "./icons/date-icon";
 
 const Post = ({ state, actions, libraries }) => {
   // Get info of current post.
@@ -21,74 +23,68 @@ const Post = ({ state, actions, libraries }) => {
   }, []);
 
   return data.isReady ? (
-    <Container>
-      <div>
-        <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-        {data.isPost && (
-          <div>
-            <StyledLink link={author.link}>
-              <Author>
-                By <b>{author.name}</b>
-              </Author>
-            </StyledLink>
-            <Fecha>
-              {" "}
-              on <b>{date.toDateString()}</b>
-            </Fecha>
-          </div>
-        )}
-      </div>
-      {state.theme.featured.showOnPost && (
-        <FeaturedMedia id={post.featured_media} />
-      )}
-      <Body>
-        <libraries.html2react.Component html={post.content.rendered} />
-      </Body>
-    </Container>
+    <Section id="primary" className="content-area hfeed">
+		<article className="entry">
+			<div className="entry-header">
+				<Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+			</div>
+			{data.isPost && (
+				// Author And Date.
+				<EntryFooter className="entry-footer hee">
+					<StyledLink link={ author.link }>
+						<Author className="byline">
+							<AuthorIcon/><span>{ author.name }</span>
+						</Author>
+					</StyledLink>
+					<Fecha className="posted-on">
+						{ ' ' }
+						<DateIcon/><span>{ date.toDateString() }</span>
+					</Fecha>
+				</EntryFooter>
+			)}
+			{state.theme.featured.showOnPost && (
+				<FeaturedMedia id={post.featured_media} />
+			)}
+			<Body className="entry-content">
+				<libraries.html2react.Component html={post.content.rendered} />
+			</Body>
+		</article>
+    </Section>
   ) : null;
 };
 
 export default connect(Post);
 
-const Container = styled.div`
-  width: 800px;
+const Section = styled.div`
   margin: 0;
-  padding: 24px;
 `;
 
-const Title = styled.h1`
-  margin: 0;
-  margin-top: 24px;
-  margin-bottom: 8px;
-  color: rgba(12, 17, 43);
+const EntryFooter = styled.div`
+	margin-bottom: 0 !important;
 `;
+
+const Title = styled.h1``;
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
 `;
 
 const Author = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
   display: inline;
 `;
 
 const Fecha = styled.p`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
   display: inline;
 `;
 
 const Body = styled.div`
-  color: rgba(12, 17, 43, 0.8);
-  word-break: break-word;
 
   * {
     max-width: 100%;
   }
 
   p {
-    line-height: 1.6em;
+    line-height: 39.6px;
   }
 
   img {
@@ -120,7 +116,8 @@ const Body = styled.div`
   }
 
   a {
-    color: rgb(31, 56, 197);
+    transition: color 110ms ease-in-out;
+    color: #0073aa;
     text-decoration: underline;
   }
 

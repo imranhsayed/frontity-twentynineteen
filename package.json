@@ -18,6 +18,6 @@
     "@frontity/wp-source": "^1.1.7",
     "@frontity/tiny-router": "^1.0.11",
     "@frontity/html2react": "^1.1.7",
-	"@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
+    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
   }
 }

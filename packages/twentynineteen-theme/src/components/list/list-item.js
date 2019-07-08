@@ -2,61 +2,63 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Link from "../link";
 import FeaturedMedia from "../featured-media";
+import AuthorIcon from "../icons/author-icon";
+import DateIcon from "../icons/date-icon";
 
-const Item = ({ state, item }) => {
-  const author = state.source.author[item.author];
-  const date = new Date(item.date);
+const Item = ( { state, item } ) => {
+	const author = state.source.author[ item.author ];
+	const date   = new Date( item.date );
 
-  return (
-    <article>
-      <Link link={item.link}>
-        <Title dangerouslySetInnerHTML={{ __html: item.title.rendered }} />
-      </Link>
-      <div>
-        <StyledLink link={author.link}>
-          <Author>
-            By <b>{author.name}</b>
-          </Author>
-        </StyledLink>
-        <Fecha>
-          {" "}
-          on <b>{date.toDateString()}</b>
-        </Fecha>
-      </div>
-      {state.theme.featured.showOnList && (
-        <FeaturedMedia id={item.featured_media} />
-      )}
-      <Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }} />
-    </article>
-  );
+	return (
+		<>
+			<article className="entry-header">
+				<Link link={ item.link }>
+					<Title className="entry-title" dangerouslySetInnerHTML={ { __html: item.title.rendered } }/>
+				</Link>
+				{ state.theme.featured.showOnList && (
+					<FeaturedMedia id={ item.featured_media }/>
+				) }
+				<Excerpt dangerouslySetInnerHTML={ { __html: item.excerpt.rendered } }/>
+			</article>
+			{/*Author And Date*/ }
+			<div className="entry-footer">
+				<StyledLink link={ author.link }>
+					<Author className="byline">
+						<AuthorIcon/><span>{ author.name }</span>
+					</Author>
+				</StyledLink>
+				<Fecha className="posted-on">
+					{ ' ' }
+					<DateIcon/><span>{ date.toDateString() }</span>
+				</Fecha>
+			</div>
+		</>
+	);
 };
 
-export default connect(Item);
+export default connect( Item );
 
 const Title = styled.h1`
-  font-size: 2rem;
-  color: rgba(12, 17, 43);
-  margin: 0;
-  padding-top: 24px;
-  padding-bottom: 8px;
-  box-sizing: border-box;
+	color: #111;
 `;
 
 const Author = styled.span`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
+	
+	margin-right: 16px;
+	
+	& span {
+	font-weight: 500;
+	}
 `;
 
-const StyledLink = styled(Link)`
+const StyledLink = styled( Link )`
   padding: 15px 0;
 `;
 
 const Fecha = styled.span`
-  color: rgba(12, 17, 43, 0.9);
-  font-size: 0.9em;
 `;
 
 const Excerpt = styled.div`
-  line-height: 1.6em;
-  color: rgba(12, 17, 43, 0.8);
+  line-height: 39.6px;
+  color: #111;
 `;

@@ -6,6 +6,7 @@ import Post from "./post";
 import Page404 from "./page404.js";
 import Loading from "./loading";
 import globalStyles from '../global-style';
+import Footer from "./footer";
 
 const Theme = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -20,12 +21,13 @@ const Theme = ({ state }) => {
       <HeadContainer>
         <Header />
       </HeadContainer>
-      <Body>
+      <Body id="content" className="site-content">
         {data.isFetching && <Loading />}
         {data.isArchive && <List />}
         {data.isPostType && <Post />}
         {data.is404 && <Page404 />}
       </Body>
+	    <Footer/>
     </>
   );
 };

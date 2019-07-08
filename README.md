@@ -4,7 +4,7 @@
 
 # Demo :video_camera:
 
-![](demo.gif)
+![](packages/twentynineteen-theme/demo.gif)
 
 # Installation :wrench:
 
@@ -59,17 +59,15 @@
    
 2. `cd packages`
 
-3. `npm install @frontity/twentynineteen-theme`
-
-4. Add the package name to the `frontity-settings.js`
+3. Add the package name to the `frontity-settings.js`
 ```ruby
   "packages": [
     {
       "name": "@frontity/twentynineteen-theme",
 ```
-5. `npx frontity dev` ( from the root of your project )
+4. `npm install && npx frontity dev` ( from the root of your project )
 
-6. Your site will be available at `http://localhost:3000/`
+5. Your site will be available at `http://localhost:3000/`
 
 
 ## Instructions :clipboard:
