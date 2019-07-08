@@ -11,44 +11,42 @@
 ## 1.For new project
 
 ### a. By cloning this project.
-1. Clone this repo in `git clone https://github.com/imranhsayed/frontity-twentynineteen` in frontity app's package directory.
+1. `git clone https://github.com/imranhsayed/frontity-twentynineteen`
 2. `cd frontity-twentynineteen`
-3. Add the theme package to the dependencies in package.json of root of your project.
+3. Add `@frontity/twentynineteen-theme` as you dependency in package.json of project's root directory.
 ```ruby
   "dependencies": {
     "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
   }
 ```
-4. Add the package name to the `frontity-settings.js`
+4. Add the package name in `frontity-settings.js`
 ```ruby
   "packages": [
     {
       "name": "@frontity/twentynineteen-theme",
 ```
 
-5. Now run the following command from the root of your project
- `npm install && npx frontity dev`
+5. `npm install && npx frontity dev` ( from the project's root directory )
  
 6. Your site will now be available at `http://localhost:3000/`
 
-### a. Using Command Line.
+### b. Using Command Line.
 
-1. `npx frontity create my-app && cd my-app`
-2. `cd packages`
-3. `npm install @frontity/twentynineteen-theme`
-4. Add the theme package to the dependencies in package.json of the root of your project.
+1. `npx frontity create my-app && cd my-app/packages`
+2. Add the theme package to the dependencies in package.json of the root of your project.
 ```ruby
   "dependencies": {
     "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
   }
 ```
-5. Add the package name to the `frontity-settings.js`
+3. Add the package name to the `frontity-settings.js`
 ```ruby
   "packages": [
     {
       "name": "@frontity/twentynineteen-theme",
 ```
-6.`npx frontity dev` ( from the root of your project )
+4. `npm install && npx frontity dev` ( from project's root directory )
+5. Your site will be available at `http://localhost:3000/`
 
 ## 2.For existing project
 
@@ -69,26 +67,27 @@
     {
       "name": "@frontity/twentynineteen-theme",
 ```
-3. `npx frontity dev` ( from the root of your project )
+5. `npx frontity dev` ( from the root of your project )
 
-4. Your site will be available at `http://localhost:3000/`
+6. Your site will be available at `http://localhost:3000/`
 
 
 ## Instructions :clipboard:
 
-Please follow the README for individual repositories
+Please follow the README for using the project/theme.
 
 ## Common Commands :computer:
 
-- `npx frontity dev` Runs server in development mode.
+- `npx frontity dev` Runs server in development mode ( from the root of your project )
 
 ## Credits :white_flower:
 
 - Build with love :blue_heart:, using [Fronity's](https://frontity.org) [mars-theme](https://www.npmjs.com/package/@frontity/mars-theme)
 
-## Social Links :link:
+## Author
 
-1. [Twitter](https://twitter.com/imranhsayed)
+1. [Imran Sayed](https://twitter.com/imranhsayed)
+2. [Smit Patadiya](https://twitter.com/smit_patadiya)
 
 ## License :scroll:
 
