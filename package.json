@@ -1,0 +1,23 @@
+{
+  "name": "frontity-twentynineteen",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frontity project",
+  "keywords": [
+    "frontity"
+  ],
+  "scripts": {
+    "dev": "frontity dev",
+    "build": "frontity build",
+    "serve": "frontity serve"
+  },
+  "prettier": {},
+  "dependencies": {
+    "frontity": "^1.2.1",
+    "@frontity/core": "^1.1.2",
+    "@frontity/wp-source": "^1.1.7",
+    "@frontity/tiny-router": "^1.0.11",
+    "@frontity/html2react": "^1.1.7",
+    "@frontity/mars-theme": "./packages/mars-theme"
+  }
+}
