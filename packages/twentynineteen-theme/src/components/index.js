@@ -5,8 +5,8 @@ import List from "./list";
 import Post from "./post";
 import Page404 from "./page404.js";
 import Loading from "./loading";
-import globalStyles from '../global-style';
 import Footer from "./footer";
+import globalStyle from '../style.min.css';
 
 const Theme = ({ state }) => {
   const data = state.source.get(state.router.link);
@@ -17,7 +17,7 @@ const Theme = ({ state }) => {
         <meta name="description" content={state.frontity.description} />
         <html lang="en" />
       </Head>
-	    <Global styles={globalStyles} />
+	    <Global styles={ css( globalStyle ) } />
       <HeadContainer>
         <Header />
       </HeadContainer>
