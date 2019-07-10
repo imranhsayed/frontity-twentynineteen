@@ -21,7 +21,8 @@ const Link = ({ actions, link, className, children }) => {
 
 const LinkEl = styled.a`
 	&:focus {
-	outline: none;
+    outline: thin dotted;
+    text-decoration: underline;
 	}
 `;
 

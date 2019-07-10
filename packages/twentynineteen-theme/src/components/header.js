@@ -40,6 +40,11 @@ const Title = styled.h1`
 	    display: none;
 		
 	}
+
+	&:focus {
+		outline: thin dotted;
+		text-decoration: underline;
+	}
 `;
 
 const Description = styled.p`
