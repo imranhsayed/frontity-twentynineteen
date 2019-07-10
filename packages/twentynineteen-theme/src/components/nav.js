@@ -32,9 +32,8 @@ const Item = styled.div`
 
   & > a {
     display: inline-block;
-    line-height: 1em;
-    border-bottom: 2px solid
-      ${({ isSelected }) => (isSelected ? "#fff" : "transparent")};
+    line-height: 1.125;
+    font-size: 1.125em;
   }
 
   &:first-of-type {

@@ -35,11 +35,11 @@ export default connect(FeaturedMedia);
 
 const Container = styled.div`
   margin-top: 16px;
-  height: 300px;
+  overflow: hidden;
 `;
 
 const StyledImage = styled(Image)`
-  height: 100%;
+  height: auto;
   width: 100%;
   object-fit: cover;
 `;

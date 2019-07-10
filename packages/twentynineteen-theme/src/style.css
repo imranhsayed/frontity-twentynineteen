@@ -4193,6 +4193,11 @@ body.page .main-navigation {
 .entry .entry-header {
   margin: calc(3 * 1rem) 1rem 1rem;
   position: relative;
+  overflow: hidden;
+}
+
+.entry .entry-header:first-of-type{
+  overflow: inherit;
 }
 
 @media only screen and (min-width: 768px) {

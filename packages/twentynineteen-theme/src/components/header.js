@@ -50,15 +50,14 @@ const Description = styled.p`
     letter-spacing: -0.01em;
     font-size: 1.125em;
     line-height: 30.9375px;
+	-webkit-hyphens: initial;
+    -moz-hyphens: initial;
+    -ms-hyphens: initial;
+    hyphens: initial;
     
     &:before {
-	    background: #767676;
-	    content: "\\020";
-	    display: inline-block;
-	    height: 2px;
-	    width: 1em;
-	    vertical-align: middle;
-	    margin: 0 .4em;
+		content: "\\2014";
+    	margin: 0 .4em;
     }
 `;
 

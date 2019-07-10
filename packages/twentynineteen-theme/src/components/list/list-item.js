@@ -12,6 +12,7 @@ const Item = ( { state, item } ) => {
 	return (
 		<>
 			<article className="entry-header">
+
 				<Link link={ item.link }>
 					<Title className="entry-title" dangerouslySetInnerHTML={ { __html: item.title.rendered } }/>
 				</Link>
@@ -19,6 +20,7 @@ const Item = ( { state, item } ) => {
 					<FeaturedMedia id={ item.featured_media }/>
 				) }
 				<Excerpt dangerouslySetInnerHTML={ { __html: item.excerpt.rendered } }/>
+				
 			</article>
 			{/*Author And Date*/ }
 			<div className="entry-footer">
@@ -40,6 +42,7 @@ export default connect( Item );
 
 const Title = styled.h1`
 	color: #111;
+	margin: calc(3 * 1rem) 0 1rem !important;
 `;
 
 const Author = styled.span`
@@ -59,6 +62,8 @@ const Fecha = styled.span`
 `;
 
 const Excerpt = styled.div`
-  line-height: 39.6px;
+  line-height: 1.8;
   color: #111;
+  margin: 32px 0;
+  overflow: hidden;
 `;
