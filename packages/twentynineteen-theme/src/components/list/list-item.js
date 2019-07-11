@@ -12,10 +12,9 @@ const Item = ( { state, item } ) => {
 	return (
 		<>
 			<article className="entry-header">
-
-				<Link link={ item.link }>
-					<Title className="entry-title" dangerouslySetInnerHTML={ { __html: item.title.rendered } }/>
-				</Link>
+				<Title className="entry-title"  >
+					<Link link={item.link} ><span dangerouslySetInnerHTML={{ __html: item.title.rendered }} /></Link>
+				</Title>
 				{ state.theme.featured.showOnList && (
 					<FeaturedMedia id={ item.featured_media }/>
 				) }
@@ -66,4 +65,8 @@ const Excerpt = styled.div`
   color: #111;
   margin: 32px 0;
   overflow: hidden;
+
+  & p {
+	  margin-top: 0 !important;
+  }
 `;

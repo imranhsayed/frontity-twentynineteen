@@ -21,7 +21,7 @@ const Post = ({ state, actions, libraries }) => {
     actions.source.fetch("/");
     List.preload();
   }, []);
-
+  
   return data.isReady ? (
     <Section id="primary" className="content-area hfeed">
 		<article className="entry">
@@ -67,6 +67,7 @@ const Title = styled.h1``;
 
 const StyledLink = styled(Link)`
   padding: 15px 0;
+  margin-right: 16px;
 `;
 
 const Author = styled.p`
