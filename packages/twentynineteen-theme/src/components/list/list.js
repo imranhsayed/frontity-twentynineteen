@@ -6,7 +6,7 @@ import Pagination from "./pagination";
 const List = ({ state }) => {
   // Get the data of the current list.
   const data = state.source.get(state.router.link);
-console.warn( data );
+  
   return (
     <Section id="primary" className="content-area hfeed">
 		<Article className="post entry">

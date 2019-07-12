@@ -18,9 +18,11 @@ const Theme = ({ state }) => {
         <html lang="en" />
       </Head>
 	    <Global styles={ css( globalStyle ) } />
-      <HeadContainer>
-        <Header />
-      </HeadContainer>
+      { ! data.isPostType && (
+        <HeadContainer>
+          <Header />
+        </HeadContainer>
+      ) }
       <Body id="content" className="site-content">
         {data.isFetching && <Loading />}
         {data.isArchive && <List />}

@@ -27,9 +27,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 	useEffect( () => {
 		if ( isThereNextPage ) actions.source.fetch( nextPageLink );
 	}, [] );
-
-	console.warn( 'next', nextPageLink );
-
+	
 	return (
 		<PaginationContainer className="">
 			{ isTherePreviousPage && (

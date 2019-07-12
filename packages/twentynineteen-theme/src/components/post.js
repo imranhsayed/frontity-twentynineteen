@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 import List from "./list";
-import FeaturedMedia from "./featured-media";
+import Header from "./header";
+import PostFeaturedMedia from "./post-featured-media";
 import AuthorIcon from "./icons/author-icon";
 import DateIcon from "./icons/date-icon";
 
@@ -21,37 +22,50 @@ const Post = ({ state, actions, libraries }) => {
     actions.source.fetch("/");
     List.preload();
   }, []);
+  
+  const headerFeaturedImageClass = ( data.isReady && state.theme.featured.showOnPost && post.featured_media ) ? 'has-featured-image' : 'empty-featured-image';
 
-  return data.isReady ? (
+  return (
+    <>
+    <div className={headerFeaturedImageClass}>
+      <Header />
+        {data.isPost ? (
+          <div className="site-featured-image">
+            {state.theme.featured.showOnPost && (
+              <PostFeaturedMedia id={post.featured_media} />
+            )}
+            <div className="entry-header">
+              <Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+              {/* Author And Date */}
+              <EntryMeta className="entry-footer">
+                <StyledLink link={author.link}>
+                  <Author className="byline">
+                    <AuthorIcon /><span>{author.name}</span>
+                  </Author>
+                </StyledLink>
+                <Fecha className="posted-on">
+                  {' '}
+                  <DateIcon /><span>{date.toDateString()}</span>
+                </Fecha>
+              </EntryMeta>
+            </div>
+            
+          </div>
+        ) : null}
+      
+      
+    </div>
+    
+    {data.isReady ? (
     <Section id="primary" className="content-area hfeed">
 		<article className="entry">
-      {state.theme.featured.showOnPost && (
-				<FeaturedMedia id={post.featured_media} />
-			)}
-			<div className="entry-header">
-				<Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-			</div>
-      
-			{data.isPost && (
-				// Author And Date.
-				<EntryFooter className="entry-footer hee">
-					<StyledLink link={ author.link }>
-						<Author className="byline">
-							<AuthorIcon/><span>{ author.name }</span>
-						</Author>
-					</StyledLink>
-					<Fecha className="posted-on">
-						{ ' ' }
-						<DateIcon/><span>{ date.toDateString() }</span>
-					</Fecha>
-				</EntryFooter>
-			)}
 			<Body className="entry-content">
 				<libraries.html2react.Component html={post.content.rendered} />
 			</Body>
 		</article>
     </Section>
-  ) : null;
+  ) : null }
+  </>);
 };
 
 export default connect(Post);
@@ -60,8 +74,12 @@ const Section = styled.div`
   margin: 0;
 `;
 
-const EntryFooter = styled.div`
+const EntryMeta = styled.div`
 	margin-bottom: 1rem !important;
+
+  @media (min-width: 768px) {
+      margin-bottom: 0 !important;
+  }
 `;
 
 const Title = styled.h1``;
@@ -80,7 +98,7 @@ const Fecha = styled.p`
 `;
 
 const Body = styled.div`
-
+  
   * {
     max-width: 100%;
   }
@@ -98,7 +116,7 @@ const Body = styled.div`
   figure {
     margin: 24px auto;
     /* next line overrides an inline style of the figure element. */
-    width: 100% !important;
+    width: 100%;
 
     figcaption {
       font-size: 0.7em;
