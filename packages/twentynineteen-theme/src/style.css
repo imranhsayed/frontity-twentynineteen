@@ -4373,6 +4373,7 @@ body.page .main-navigation {
 .entry .entry-summary {
   max-width: calc(100% - (2 * 1rem));
   margin: 0 1rem;
+  overflow: hidden;
 }
 
 @media only screen and (min-width: 768px) {
@@ -6489,6 +6490,8 @@ svg {
   color: #fff;
   opacity: 0.6;
 }
+
+
 
 @media only screen and (min-width: 768px){
     .has-featured-image{
