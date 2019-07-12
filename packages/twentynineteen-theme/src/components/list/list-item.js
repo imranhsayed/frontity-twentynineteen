@@ -23,14 +23,16 @@ const Item = ( { state, item } ) => {
 			</article>
 			{/*Author And Date*/ }
 			<div className="entry-footer">
-				<StyledLink link={ author.link }>
-					<Author className="byline">
-						<AuthorIcon/><span>{ author.name }</span>
-					</Author>
-				</StyledLink>
+				
+				<Author className="byline">
+					<AuthorIcon/>
+					<Link link={ author.link } >{ author.name }</Link>
+				</Author>
+				
 				<Fecha className="posted-on">
 					{ ' ' }
-					<DateIcon/><span>{ date.toDateString() }</span>
+					<DateIcon />
+					<Link link={item.link} >{date.toDateString()}</Link>
 				</Fecha>
 			</div>
 		</>
@@ -45,16 +47,12 @@ const Title = styled.h1`
 `;
 
 const Author = styled.span`
-	
+	display: inline;
 	margin-right: 16px;
 	
-	& span {
+	& a {
 	font-weight: 500;
 	}
-`;
-
-const StyledLink = styled( Link )`
-  padding: 15px 0;
 `;
 
 const Fecha = styled.span`

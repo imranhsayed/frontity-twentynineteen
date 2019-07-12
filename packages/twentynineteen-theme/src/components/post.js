@@ -24,34 +24,33 @@ const Post = ({ state, actions, libraries }) => {
   }, []);
   
   const headerFeaturedImageClass = ( data.isReady && state.theme.featured.showOnPost && post.featured_media ) ? 'has-featured-image' : 'empty-featured-image';
-
   return (
     <>
     <div className={headerFeaturedImageClass}>
       <Header />
-        {data.isPost ? (
+        {data.isReady && (
           <div className="site-featured-image">
             {state.theme.featured.showOnPost && (
               <PostFeaturedMedia id={post.featured_media} />
             )}
             <div className="entry-header">
               <Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-              {/* Author And Date */}
-              <EntryMeta className="entry-footer">
-                <StyledLink link={author.link}>
-                  <Author className="byline">
-                    <AuthorIcon /><span>{author.name}</span>
-                  </Author>
-                </StyledLink>
-                <Fecha className="posted-on">
-                  {' '}
-                  <DateIcon /><span>{date.toDateString()}</span>
-                </Fecha>
-              </EntryMeta>
+              {data.isPost && (
+                <EntryMeta className="entry-meta">
+                    <Author className="byline">
+                      <AuthorIcon />
+                      <StyledLink link={author.link}>{author.name}</StyledLink>
+                    </Author>
+                    <Fecha className="posted-on">
+                      {' '}
+                      <DateIcon />
+                      <StyledLink link={state.router.link}>{date.toDateString()}</StyledLink>
+                    </Fecha>
+                </EntryMeta>
+              )}
             </div>
-            
           </div>
-        ) : null}
+        )}
       
       
     </div>
@@ -76,6 +75,11 @@ const Section = styled.div`
 
 const EntryMeta = styled.div`
 	margin-bottom: 1rem !important;
+  color: #767676;
+
+  & .svg-icon{
+      margin-right: 0.5em;
+  }
 
   @media (min-width: 768px) {
       margin-bottom: 0 !important;
@@ -87,6 +91,7 @@ const Title = styled.h1``;
 const StyledLink = styled(Link)`
   padding: 15px 0;
   margin-right: 16px;
+  color: #767676;
 `;
 
 const Author = styled.p`

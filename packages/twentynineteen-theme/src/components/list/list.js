@@ -10,16 +10,15 @@ const List = ({ state }) => {
   return (
     <Section id="primary" className="content-area hfeed">
 		<Article className="post entry">
-			{/* If the list is a taxonomy, we render a title. */}
-			{data.isTaxonomy && (
-				<Header className="entry-header">
-					{data.taxonomy}: {state.source[data.taxonomy][data.id].name}
-				</Header>
+			
+			{/* If the list is an author, we render a title. */}
+			{(data.isAuthor) && (
+				<Header className="page-title">Author Archives: <span className="page-description">{state.source.author[data.id].name}</span></Header>
 			)}
 
-			{/* If the list is an author, we render a title. */}
-			{data.isAuthor && (
-				<AuthorHeader className="page-title">Author Archives: <span className="page-description">{state.source.author[data.id].name}</span></AuthorHeader>
+			{/* If the list is a taxonomy or category, we render a title. */}
+			{( data.isTaxonomy || data.isCategory ) && (
+				<Header className="page-title">{data.taxonomy.charAt(0).toUpperCase() + data.taxonomy.slice(1) } Archives: <span className="page-description">{state.source[data.taxonomy][data.id].name}</span></Header>
 			)}
 
 			{/* Iterate over the items of the list. */}
@@ -44,12 +43,6 @@ const Section = styled.section`
 const Article = styled.article``;
 
 const Header = styled.h3`
-  font-weight: 300;
-  text-transform: capitalize;
-  color: rgba(12, 17, 43, 0.9);
-`;
-
-const AuthorHeader = styled.h3`
 	font-family: "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
 	font-size: 1.125em;
 	clear: both;

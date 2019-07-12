@@ -6470,8 +6470,24 @@ svg {
     position: relative;
 }
 
-.entry-footer .svg-icon{
-    margin-right: 0.5em;
+.entry-meta a{
+    color: #767676;
+}
+
+.entry-meta a:hover,
+.entry-meta a:focus {
+    text-decoration: none;
+    color: #0073aa;
+}
+
+.has-featured-image .entry-meta a {
+  color: #fff;
+}
+
+.has-featured-image .entry-meta a:hover,
+.has-featured-image .entry-meta a:focus {
+  color: #fff;
+  opacity: 0.6;
 }
 
 @media only screen and (min-width: 768px){
