@@ -21,13 +21,17 @@ const Post = ({ state, actions, libraries }) => {
     actions.source.fetch("/");
     List.preload();
   }, []);
-  
+
   return data.isReady ? (
     <Section id="primary" className="content-area hfeed">
 		<article className="entry">
+      {state.theme.featured.showOnPost && (
+				<FeaturedMedia id={post.featured_media} />
+			)}
 			<div className="entry-header">
 				<Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
 			</div>
+      
 			{data.isPost && (
 				// Author And Date.
 				<EntryFooter className="entry-footer hee">
@@ -41,9 +45,6 @@ const Post = ({ state, actions, libraries }) => {
 						<DateIcon/><span>{ date.toDateString() }</span>
 					</Fecha>
 				</EntryFooter>
-			)}
-			{state.theme.featured.showOnPost && (
-				<FeaturedMedia id={post.featured_media} />
 			)}
 			<Body className="entry-content">
 				<libraries.html2react.Component html={post.content.rendered} />
@@ -60,7 +61,7 @@ const Section = styled.div`
 `;
 
 const EntryFooter = styled.div`
-	margin-bottom: 0 !important;
+	margin-bottom: 1rem !important;
 `;
 
 const Title = styled.h1``;
@@ -110,10 +111,9 @@ const Body = styled.div`
   }
 
   blockquote {
-    margin: 16px 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-left: 4px solid rgba(12, 17, 43);
-    padding: 4px 16px;
+    margin: 32px 0;
+    border-left: 2px solid #0073aa;
+    padding: 0 0 0 1em;
   }
 
   a {

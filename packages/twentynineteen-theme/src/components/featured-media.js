@@ -34,8 +34,31 @@ const FeaturedMedia = ({ state, id }) => {
 export default connect(FeaturedMedia);
 
 const Container = styled.div`
-  margin-top: 16px;
+  margin: 1rem 0;
   overflow: hidden;
+  position: relative;
+  display: flex;
+  
+  &::before, &::after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "\\020";
+    pointer-events: none;
+    background: #0073aa;
+    mix-blend-mode: screen;
+    opacity: 0.1;
+    z-index: 2;
+  }
+
+  &::after {
+    mix-blend-mode: multiply;
+    opacity: 1;
+    z-index: 3;
+  }
 `;
 
 const StyledImage = styled(Image)`

@@ -63,10 +63,18 @@ const Fecha = styled.span`
 const Excerpt = styled.div`
   line-height: 1.8;
   color: #111;
-  margin: 32px 0;
+  margin: 0;
   overflow: hidden;
 
   & p {
-	  margin-top: 0 !important;
+	  margin: 32px 0;
+  }
+
+  @media only screen and (min-width: 768px) {
+	  max-width: calc(8 * (100vw / 12) - 28px);
+  }
+  
+  @media only screen and (min-width: 1168px) {
+	  max-width: calc(6 * (100vw / 12) - 28px);
   }
 `;
