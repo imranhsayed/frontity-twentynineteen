@@ -4236,7 +4236,7 @@ body.page .main-navigation {
 .entry .entry-meta > span,
 .entry .entry-footer > span {
   margin-right: 1rem;
-  display: inline-block;
+  display: inline;
 }
 
 .entry .entry-meta > span:last-child,
@@ -6471,14 +6471,21 @@ svg {
     position: relative;
 }
 
-.entry-meta a{
+.entry-meta a,
+.entry-footer a {
     color: #767676;
+    text-decoration: none !important;
 }
 
 .entry-meta a:hover,
 .entry-meta a:focus {
     text-decoration: none;
     color: #0073aa;
+}
+
+.has-featured-image .entry-meta .svg-icon{
+  color: #fff;
+  vertical-align: middle;
 }
 
 .has-featured-image .entry-meta a {

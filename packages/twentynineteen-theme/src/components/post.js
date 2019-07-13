@@ -4,18 +4,17 @@ import Link from "./link";
 import List from "./list";
 import Header from "./header";
 import PostFeaturedMedia from "./post-featured-media";
-import AuthorIcon from "./icons/author-icon";
-import DateIcon from "./icons/date-icon";
+import Author from "./entry-meta/author";
+import PostedOn from "./entry-meta/posted-on";
+import Categories from "./entry-meta/categories";
+import Tags from "./entry-meta/tags";
+
 
 const Post = ({ state, actions, libraries }) => {
   // Get info of current post.
   const data = state.source.get(state.router.link);
   // Get the the post.
   const post = state.source[data.type][data.id];
-  // Get the author.
-  const author = state.source.author[post.author];
-  // Get a date for humans.
-  const date = new Date(post.date);
 
   // Prefetch home posts and the list component.
   useEffect(() => {
@@ -37,15 +36,8 @@ const Post = ({ state, actions, libraries }) => {
               <Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
               {data.isPost && (
                 <EntryMeta className="entry-meta">
-                    <Author className="byline">
-                      <AuthorIcon />
-                      <StyledLink link={author.link}>{author.name}</StyledLink>
-                    </Author>
-                    <Fecha className="posted-on">
-                      {' '}
-                      <DateIcon />
-                      <StyledLink link={state.router.link}>{date.toDateString()}</StyledLink>
-                    </Fecha>
+                  <Author authorId={post.author} />
+                  <PostedOn post={post} />
                 </EntryMeta>
               )}
             </div>
@@ -60,7 +52,17 @@ const Post = ({ state, actions, libraries }) => {
 		<article className="entry">
 			<Body className="entry-content">
 				<libraries.html2react.Component html={post.content.rendered} />
+        {data.isPost && (
+          <EntryFooter className="entry-footer">
+              <Author authorId={post.author} />
+              <PostedOn post={post} />
+              <Categories cats={post.categories} />
+              <Tags tags={post.tags} />
+          </EntryFooter>
+        )}
+            
 			</Body>
+      
 		</article>
     </Section>
   ) : null }
@@ -86,21 +88,20 @@ const EntryMeta = styled.div`
   }
 `;
 
-const Title = styled.h1``;
-
-const StyledLink = styled(Link)`
-  padding: 15px 0;
-  margin-right: 16px;
+const EntryFooter = styled.footer`
+	margin-bottom: 1rem !important;
   color: #767676;
+
+  & .svg-icon{
+      margin-right: 0.5em;
+  }
+
+  @media (min-width: 768px) {
+      margin-bottom: 0 !important;
+  }
 `;
 
-const Author = styled.p`
-  display: inline;
-`;
-
-const Fecha = styled.p`
-  display: inline;
-`;
+const Title = styled.h1``;
 
 const Body = styled.div`
   
