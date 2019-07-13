@@ -6498,7 +6498,9 @@ svg {
   opacity: 0.6;
 }
 
-
+.entry .entry-content .wp-block-image img{
+    width: auto;
+}
 
 @media only screen and (min-width: 768px){
     .has-featured-image{

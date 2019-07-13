@@ -16,7 +16,9 @@ const Item = ( { state, item } ) => {
 					<Link link={item.link} ><span dangerouslySetInnerHTML={{ __html: item.title.rendered }} /></Link>
 				</Title>
 				{ state.theme.featured.showOnList && (
-					<FeaturedMedia id={ item.featured_media }/>
+					<Link link={item.link} >
+						<FeaturedMedia id={ item.featured_media }/>
+					</Link>
 				) }
 				<Excerpt dangerouslySetInnerHTML={ { __html: item.excerpt.rendered } }/>
 				
