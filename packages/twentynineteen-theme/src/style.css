@@ -6502,6 +6502,11 @@ svg {
     width: auto;
 }
 
+/* Pagination */
+.tn-pagination .page-numbers {
+	padding: 1rem;
+}
+
 @media only screen and (min-width: 768px){
     .has-featured-image{
         min-height: 100vh;

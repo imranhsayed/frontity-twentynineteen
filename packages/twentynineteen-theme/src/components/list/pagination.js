@@ -10,35 +10,70 @@ const Pagination = ( { state, actions, libraries } ) => {
 
 	const isThereNextPage     = page < totalPages;
 	const isTherePreviousPage = page > 1;
+	
+	/**
+	 * Get the required page link.
+	 *
+	 * @param {int} pageNo Page No.
+	 * @return {string} Post permalink.
+	 */
+	const getPageLink = ( pageNo ) => {
+		return libraries.source.stringify({
+			path,
+			page: pageNo,
+			query
+		});
+	};
 
-	const nextPageLink = libraries.source.stringify( {
-		path,
-		page: page + 1,
-		query
-	} );
+	const renderPagination = ( totalPages ) => {
 
-	const prevPageLink = libraries.source.stringify( {
-		path,
-		page: page - 1,
-		query
-	} );
+		let content = '';
+		let pagination = [];
+
+		for ( let i = 0; i < totalPages; i++ ) {
+			content = <Text>{ i + 1 }</Text>;
+			pagination.push( content );
+		}
+
+		return pagination;
+	};
+
+	const pagination = renderPagination( totalPages );
 
 	// Fetch the next page if it hasn't been fetched yet.
 	useEffect( () => {
-		if ( isThereNextPage ) actions.source.fetch( nextPageLink );
+		if ( isThereNextPage ) actions.source.fetch( getPageLink( page + 1 ) );
 	}, [] );
-	
+
 	return (
-		<PaginationContainer className="">
+		<PaginationContainer className="tn-pagination">
 			{ isTherePreviousPage && (
-				<Link className="pagination-links" link={ prevPageLink }>
-					<Text><PreviousIcon/> Older posts</Text>
+				<Link className="pagination-links" link={ getPageLink( page - 1 ) }>
+					<Text><PreviousIcon/> Newer posts</Text>
 				</Link>
 			) }
-			{ isTherePreviousPage && isThereNextPage && <NavLinkSeparator> - </NavLinkSeparator> }
+
+			<>
+				{ pagination && pagination.map( ( item, index ) => {
+					const pageNo = index + 1;
+					return (
+						( page != pageNo ) ? (
+							<Link key={ `${ index }-pagination` } className="page-numbers" link={ getPageLink( index + 1 ) }>
+								{ item }
+							</Link>
+						) : (
+							<span key={ `${ index }-pagination` } className="page-numbers current">
+								{ item }
+							</span>
+						)
+					)
+				} )
+				}
+			</>
+
 			{ isThereNextPage && (
-				<Link className="pagination-links" link={ nextPageLink }>
-					<Text>Newer posts <NextIcon/></Text>
+				<Link className="pagination-links" link={ getPageLink( page + 1 ) }>
+					<Text> Older posts <NextIcon/></Text>
 				</Link>
 			) }
 		</PaginationContainer>
