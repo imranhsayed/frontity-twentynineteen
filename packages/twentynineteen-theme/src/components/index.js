@@ -8,8 +8,8 @@ import Loading from "./loading";
 import Footer from "./footer";
 import globalStyle from '../style.css';
 
-const Theme = ({ state }) => {
-  const data = state.source.get(state.router.link);
+const Theme = ( { state } ) => {
+  const data = state.source.get( state.router.link );
   return (
     <>
       <Head>

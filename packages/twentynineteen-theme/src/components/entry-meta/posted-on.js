@@ -3,9 +3,9 @@ import { connect, styled } from "frontity";
 import Link from "../link";
 import DateIcon from "../icons/date-icon";
 
-const PostedOn = ({ state, post }) => {
+const PostedOn = ( { state, post } ) => {
 
-    const date = new Date(post.date);
+    const date = new Date( post.date );
     
     return (
         <Wrapper className="posted-on">
@@ -15,7 +15,7 @@ const PostedOn = ({ state, post }) => {
     );
 };
 
-export default connect(PostedOn);
+export default connect( PostedOn );
 
 const Wrapper = styled.span`
 	display: inline;

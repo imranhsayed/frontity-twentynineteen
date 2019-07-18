@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
-import Link from "./link";
 import List from "./list";
 import Header from "./header";
 import PostFeaturedMedia from "./post-featured-media";
@@ -10,17 +9,17 @@ import Categories from "./entry-meta/categories";
 import Tags from "./entry-meta/tags";
 
 
-const Post = ({ state, actions, libraries }) => {
+const Post = ( { state, actions, libraries } ) => {
   // Get info of current post.
   const data = state.source.get(state.router.link);
   // Get the the post.
   const post = state.source[data.type][data.id];
 
   // Prefetch home posts and the list component.
-  useEffect(() => {
+  useEffect( () => {
     actions.source.fetch("/");
     List.preload();
-  }, []);
+  }, [] );
   
   const headerFeaturedImageClass = ( data.isReady && state.theme.featured.showOnPost && post.featured_media ) ? 'has-featured-image' : 'empty-featured-image';
   
@@ -28,63 +27,61 @@ const Post = ({ state, actions, libraries }) => {
     <>
     <div className={ headerFeaturedImageClass }>
       <Header/>
-        { data.isReady && (
+        { data.isReady ? (
           <div className="site-featured-image">
-            { state.theme.featured.showOnPost && (
+            { state.theme.featured.showOnPost ? (
               <PostFeaturedMedia id={ post.featured_media }/>
-            ) }
+            ) : null }
             <div className="entry-header">
-              <Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-              { data.isPost && (
+              <Title className="entry-title" dangerouslySetInnerHTML={ { __html: post.title.rendered } }/>
+              { data.isPost ? (
                 <EntryMeta className="entry-meta">
                   <Author authorId={ post.author }/>
                   <PostedOn post={ post }/>
                 </EntryMeta>
-              ) }
+              ) : null }
             </div>
           </div>
-        )}
+        ) : null }
       
       
     </div>
     
     { data.isReady ? (
     <Section id="primary" className="content-area hfeed">
-		<article className="entry">
-			<Body className="entry-content">
-				<libraries.html2react.Component html={ post.content.rendered } />
-        { data.isPost && (
-          <EntryFooter className="entry-footer">
-              <Author authorId={ post.author } />
-              <PostedOn post={ post } />
-              <Categories cats={ post.categories } />
-              <Tags tags={ post.tags } />
-          </EntryFooter>
-        ) }
-            
-			</Body>
-      
-		</article>
+      <article className="entry">
+        <Body className="entry-content">
+          <libraries.html2react.Component html={ post.content.rendered }/>
+          { data.isPost ? (
+            <EntryFooter className="entry-footer">
+                <Author authorId={ post.author }/>
+                <PostedOn post={ post }/>
+                <Categories cats={ post.categories }/>
+                <Tags tags={ post.tags }/>
+            </EntryFooter>
+          ) : null }
+        </Body>
+      </article>
     </Section>
   ) : null }
   </>);
 };
 
-export default connect(Post);
+export default connect( Post );
 
 const Section = styled.div`
   margin: 0;
 `;
 
 const EntryMeta = styled.div`
-	margin-bottom: 1rem !important;
+  margin-bottom: 1rem !important;
   color: #767676;
 
   & .svg-icon{
       margin-right: 0.5em;
   }
 
-  @media (min-width: 768px) {
+  @media ( min-width: 768px ) {
       margin-bottom: 0 !important;
   }
 `;
@@ -97,7 +94,7 @@ const EntryFooter = styled.footer`
       margin-right: 0.5em;
   }
 
-  @media (min-width: 768px) {
+  @media ( min-width: 768px ) {
       margin-bottom: 0 !important;
   }
 `;
@@ -122,7 +119,7 @@ const Body = styled.div`
 
   figure {
     margin: 24px auto;
-    /* next line overrides an inline style of the figure element. */
+    /* Next line overrides an inline style of the figure element. */
     width: 100%;
 
     figcaption {
@@ -149,7 +146,7 @@ const Body = styled.div`
 
   /* WordPress Core Align Classes */
 
-  @media (min-width: 420px) {
+  @media ( min-width: 420px ) {
     img.aligncenter,
     img.alignleft,
     img.alignright {

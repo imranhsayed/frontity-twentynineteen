@@ -2,9 +2,9 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 
-const Nav = ({ state }) => (
+const Nav = ( { state } ) => (
   <Container id="site-navigation" className="main-navigation" ariaLabel="Top Menu">
-    { state.theme.menu.map( ( [name, link] ) => (
+    { state.theme.menu.map( ( [ name, link ] ) => (
       <Item key={ name } isSelected={ state.router.link === link }>
         <Link link={ link }>{ name }</Link>
       </Item>
@@ -12,7 +12,7 @@ const Nav = ({ state }) => (
   </Container>
 );
 
-export default connect(Nav);
+export default connect( Nav );
 
 const Container = styled.nav`
   list-style: none;

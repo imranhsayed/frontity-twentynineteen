@@ -19,7 +19,7 @@ const Container = styled.div`
 	}
 	
 	@media screen and ( min-width: 768px ) {
-		margin: 0 calc(10% + 60px) calc(10% + 60px);
+		margin: 0 calc( 10% + 60px ) calc( 10% + 60px );
 		padding: 0;
 	}
 `;

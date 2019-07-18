@@ -22,6 +22,7 @@ const Header = ( { state } ) => (
 export default connect( Header );
 
 const SiteBrandingContainer = styled.div``;
+
 const SiteBranding = styled.div``;
 
 const Container = styled.header`
@@ -38,7 +39,6 @@ const Title = styled.h1`
 	
 	&:not(.site-title):before {
 	    display: none;
-		
 	}
 
 	&:focus {

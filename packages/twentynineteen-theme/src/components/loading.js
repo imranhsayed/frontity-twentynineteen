@@ -10,7 +10,7 @@ const Loading = () => (
       margin="3px"
       width={4}
       height={24}
-    />
+   />
   </Container>
 );
 

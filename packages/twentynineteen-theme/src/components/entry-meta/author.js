@@ -3,7 +3,7 @@ import { connect, styled } from "frontity";
 import Link from "../link";
 import AuthorIcon from "../icons/author-icon";
 
-const Author = ({ state, authorId }) => {
+const Author = ( { state, authorId } ) => {
 
     const author = state.source.author[authorId];
 
@@ -15,7 +15,7 @@ const Author = ({ state, authorId }) => {
     );
 };
 
-export default connect(Author);
+export default connect( Author );
 
 const Wrapper = styled.span`
 	display: inline;
