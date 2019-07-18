@@ -13,28 +13,28 @@ const Theme = ({ state }) => {
   return (
     <>
       <Head>
-        <title>{state.frontity.title}</title>
-        <meta name="description" content={state.frontity.description} />
-        <html lang="en" />
+        <title>{ state.frontity.title }</title>
+        <meta name="description" content={ state.frontity.description }/>
+        <html lang="en"/>
       </Head>
-	    <Global styles={ css( globalStyle ) } />
+	    <Global styles={ css( globalStyle ) }/>
       { ! data.isPostType && (
         <HeadContainer>
-          <Header />
+          <Header/>
         </HeadContainer>
       ) }
       <Body id="content" className="site-content">
-        {data.isFetching && <Loading />}
-        {data.isArchive && <List />}
-        {data.isPostType && <Post />}
-        {data.is404 && <Page404 />}
+        { data.isFetching && <Loading/> }
+        { data.isArchive && <List/> }
+        { data.isPostType && <Post/> }
+        { data.is404 && <Page404/> }
       </Body>
 	    <Footer/>
     </>
   );
 };
 
-export default connect(Theme);
+export default connect( Theme );
 
 const HeadContainer = styled.div``;
 

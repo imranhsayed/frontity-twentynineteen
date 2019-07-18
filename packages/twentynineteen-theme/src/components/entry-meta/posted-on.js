@@ -9,8 +9,8 @@ const PostedOn = ({ state, post }) => {
     
     return (
         <Wrapper className="posted-on">
-            <DateIcon />
-            <Link link={post.link} >{date.toDateString()}</Link>
+            <DateIcon/>
+            <Link link={ post.link }>{ date.toDateString() }</Link>
         </Wrapper>
     );
 };

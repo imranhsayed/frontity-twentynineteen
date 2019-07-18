@@ -13,22 +13,22 @@ const Item = ( { state, item } ) => {
 		<>
 			<article className="entry-header">
 				<Title className="entry-title"  >
-					<Link link={item.link} ><span dangerouslySetInnerHTML={{ __html: item.title.rendered }} /></Link>
+					<Link link={ item.link } ><span dangerouslySetInnerHTML={{ __html: item.title.rendered }} /></Link>
 				</Title>
 				{ state.theme.featured.showOnList && (
-					<Link link={item.link} >
+					<Link link={ item.link } >
 						<FeaturedMedia id={ item.featured_media }/>
 					</Link>
 				) }
-				<Excerpt dangerouslySetInnerHTML={ { __html: item.excerpt.rendered } }/>
+				<Excerpt dangerouslySetInnerHTML={{ __html: item.excerpt.rendered }}/>
 				
 			</article>
-			{/*Author And Date*/ }
+			{ /*Author And Date*/ }
 			<div className="entry-footer">
-				<Author authorId={item.author} />
-				<PostedOn post={item} />
-				<Categories cats={item.categories.slice(0, 2)} />
-				<Tags tags={item.tags.slice(0, 2)} />
+				<Author authorId={ item.author }/>
+				<PostedOn post={ item }/>
+				<Categories cats={ item.categories.slice(0, 2) }/>
+				<Tags tags={ item.tags.slice(0, 2) }/>
 			</div>
 		</>
 	);

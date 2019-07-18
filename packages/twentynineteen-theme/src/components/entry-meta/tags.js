@@ -7,21 +7,21 @@ const Tags = ({ state, tags }) => {
 
     return (
         <>
-            {tags.length > 0 ? (
+            { tags.length > 0 ? (
                 <Wrapper className="tags-links">
-                    <TagIcon />
-                    {tags.map((tagId, index) => {
+                    <TagIcon/>
+                    { tags.map( (tagId, index) => {
                         const isLast = (tags.length === index + 1) ? true : false;
                         const tag = state.source.tag[tagId];
                         return (
-                            <span key={tagId} >
-                                <Link link={tag.link} >{tag.name}</Link>
-                                {!isLast && (', ')}
+                            <span key={ tagId }>
+                                <Link link={ tag.link } >{ tag.name }</Link>
+                                { !isLast && (', ') }
                             </span>
                         );
-                    })}
+                    } ) }
                 </Wrapper>
-            ) : null}
+            )  : null }
         </>
     );
 };

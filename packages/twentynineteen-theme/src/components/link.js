@@ -13,8 +13,8 @@ const Link = ({ actions, link, className, children }) => {
   };
 
   return (
-    <LinkEl href={link} onClick={onClick} className={className}>
-      {children}
+    <LinkEl href={ link } onClick={ onClick } className={ className }>
+      { children }
     </LinkEl>
   );
 };

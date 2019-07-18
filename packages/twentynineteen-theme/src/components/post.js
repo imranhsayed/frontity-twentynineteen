@@ -23,23 +23,24 @@ const Post = ({ state, actions, libraries }) => {
   }, []);
   
   const headerFeaturedImageClass = ( data.isReady && state.theme.featured.showOnPost && post.featured_media ) ? 'has-featured-image' : 'empty-featured-image';
+  
   return (
     <>
-    <div className={headerFeaturedImageClass}>
-      <Header />
-        {data.isReady && (
+    <div className={ headerFeaturedImageClass }>
+      <Header/>
+        { data.isReady && (
           <div className="site-featured-image">
-            {state.theme.featured.showOnPost && (
-              <PostFeaturedMedia id={post.featured_media} />
-            )}
+            { state.theme.featured.showOnPost && (
+              <PostFeaturedMedia id={ post.featured_media }/>
+            ) }
             <div className="entry-header">
               <Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-              {data.isPost && (
+              { data.isPost && (
                 <EntryMeta className="entry-meta">
-                  <Author authorId={post.author} />
-                  <PostedOn post={post} />
+                  <Author authorId={ post.author }/>
+                  <PostedOn post={ post }/>
                 </EntryMeta>
-              )}
+              ) }
             </div>
           </div>
         )}
@@ -47,19 +48,19 @@ const Post = ({ state, actions, libraries }) => {
       
     </div>
     
-    {data.isReady ? (
+    { data.isReady ? (
     <Section id="primary" className="content-area hfeed">
 		<article className="entry">
 			<Body className="entry-content">
-				<libraries.html2react.Component html={post.content.rendered} />
-        {data.isPost && (
+				<libraries.html2react.Component html={ post.content.rendered } />
+        { data.isPost && (
           <EntryFooter className="entry-footer">
-              <Author authorId={post.author} />
-              <PostedOn post={post} />
-              <Categories cats={post.categories} />
-              <Tags tags={post.tags} />
+              <Author authorId={ post.author } />
+              <PostedOn post={ post } />
+              <Categories cats={ post.categories } />
+              <Tags tags={ post.tags } />
           </EntryFooter>
-        )}
+        ) }
             
 			</Body>
       

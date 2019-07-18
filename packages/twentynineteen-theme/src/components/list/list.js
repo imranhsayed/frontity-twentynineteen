@@ -11,23 +11,23 @@ const List = ({ state }) => {
     <Section id="primary" className="content-area hfeed">
 		<Article className="post entry">
 			
-			{/* If the list is an author, we render a title. */}
-			{(data.isAuthor) && (
-				<Header className="page-title">Author Archives: <span className="page-description">{state.source.author[data.id].name}</span></Header>
-			)}
+			{ /* If the list is an author, we render a title. */ }
+			{ ( data.isAuthor ) && (
+				<Header className="page-title">Author Archives: <span className="page-description">{ state.source.author[data.id].name }</span></Header>
+			) }
 
-			{/* If the list is a taxonomy or category, we render a title. */}
-			{( data.isTaxonomy || data.isCategory ) && (
-				<Header className="page-title">{data.taxonomy.charAt(0).toUpperCase() + data.taxonomy.slice(1) } Archives: <span className="page-description">{state.source[data.taxonomy][data.id].name}</span></Header>
-			)}
+			{ /* If the list is a taxonomy or category, we render a title. */ }
+			{ ( data.isTaxonomy || data.isCategory ) && (
+				<Header className="page-title">{ data.taxonomy.charAt(0).toUpperCase() + data.taxonomy.slice(1) } Archives: <span className="page-description">{ state.source[data.taxonomy][data.id].name }</span></Header>
+			) }
 
-			{/* Iterate over the items of the list. */}
-			{data.items.map(({ type, id }) => {
+			{ /* Iterate over the items of the list. */ }
+			{ data.items.map( ( { type, id } ) => {
 				const item = state.source[type][id];
 				// Render one Item component for each one.
-				return <Item key={item.id} item={item} />;
-			})}
-			<Pagination />
+				return <Item key={ item.id } item={ item }/>;
+			} ) }
+			<Pagination/>
 		</Article>
     </Section>
   );

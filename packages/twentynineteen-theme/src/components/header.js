@@ -3,8 +3,7 @@ import { connect, styled } from "frontity";
 import Link from "./link";
 import Nav from "./nav";
 
-const Header = ( { state } ) => {
-	return(
+const Header = ( { state } ) => (
 	<>
 		<Container id="masthead" className="site-header">
 			<SiteBrandingContainer className="site-branding-container">
@@ -18,7 +17,7 @@ const Header = ( { state } ) => {
 			</SiteBrandingContainer>
 		</Container>
 	</>
-)};
+);
 
 export default connect( Header );
 

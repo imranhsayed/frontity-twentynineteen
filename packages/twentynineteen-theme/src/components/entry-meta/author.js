@@ -9,8 +9,8 @@ const Author = ({ state, authorId }) => {
 
     return (
         <Wrapper className="byline">
-            <AuthorIcon />
-            <Link link={author.link}>{author.name}</Link>
+            <AuthorIcon/>
+            <Link link={ author.link }>{ author.name }</Link>
         </Wrapper>
     );
 };

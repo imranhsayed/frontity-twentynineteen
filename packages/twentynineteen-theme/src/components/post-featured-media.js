@@ -22,9 +22,9 @@ const PostFeaturedMedia = ({ state, id }) => {
 
   return (
       <StyledImage
-        alt={media.title.rendered}
-        src={media.source_url}
-        srcSet={srcset}
+        alt={ media.title.rendered }
+        src={ media.source_url }
+        srcSet={ srcset }
       />
   );
 };

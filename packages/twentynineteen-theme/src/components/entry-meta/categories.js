@@ -9,17 +9,17 @@ const Categories = ({ state, cats }) => {
         <>
         { cats.length > 0 ? (
             <Wrapper className="cat-links">
-                <CategoryIcon />
-                { cats.map((catId, index) => {
+                <CategoryIcon/>
+                { cats.map( (catId, index) => {
                     const isLast = (cats.length === index + 1) ? true : false;
                     const cat = state.source.category[catId];
                     return (
-                        <span key={catId} >
-                            <Link link={cat.link} >{cat.name}</Link>
-                            {!isLast && (', ')}
+                        <span key={ catId }>
+                            <Link link={ cat.link }>{ cat.name }</Link>
+                            { !isLast && (', ') }
                         </span>
                     );
-                }) }
+                } ) }
             </Wrapper>
         ) : null }
         </>

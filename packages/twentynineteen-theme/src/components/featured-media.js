@@ -23,9 +23,9 @@ const FeaturedMedia = ({ state, id }) => {
   return (
     <Container>
       <StyledImage
-        alt={media.title.rendered}
-        src={media.source_url}
-        srcSet={srcset}
+        alt={ media.title.rendered }
+        src={ media.source_url }
+        srcSet={ srcset }
       />
     </Container>
   );
