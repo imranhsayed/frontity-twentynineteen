@@ -10,7 +10,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 
 	const isThereNextPage     = page < totalPages;
 	const isTherePreviousPage = page > 1;
-	
+
 	/**
 	 * Get the required page link.
 	 *
@@ -31,7 +31,20 @@ const Pagination = ( { state, actions, libraries } ) => {
 		let pagination = [];
 
 		for ( let i = 0; i < totalPages; i++ ) {
-			content = <Text>{ i + 1 }</Text>;
+			const pageNo = i + 1;
+			if ( page !== pageNo ) {
+				content = (
+					<Link className="page-numbers" link={ getPageLink( i + 1 ) }>
+						<Text>{ i + 1 }</Text>
+					</Link>
+				);
+			} else {
+				content = (
+					<span className="page-numbers current">
+						<Text>{ i + 1 }</Text>
+					</span>
+				)
+			}
 			pagination.push( content );
 		}
 
@@ -54,20 +67,11 @@ const Pagination = ( { state, actions, libraries } ) => {
 			) }
 
 			<>
-				{ pagination && pagination.map( ( item, index ) => {
-					const pageNo = index + 1;
-					return (
-						( page != pageNo ) ? (
-							<Link key={ `${ index }-pagination` } className="page-numbers" link={ getPageLink( index + 1 ) }>
-								{ item }
-							</Link>
-						) : (
-							<span key={ `${ index }-pagination` } className="page-numbers current">
-								{ item }
-							</span>
-						)
-					)
-				} )
+				{ pagination && pagination.map( ( item, index ) => (
+					<React.Fragment key={ `${ index }-pagination` }>
+						{ item }
+					</React.Fragment>
+				) )
 				}
 			</>
 
