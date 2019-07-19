@@ -11,6 +11,7 @@
 ## 1.For new project
 
 ### a. By cloning this project.
+
 1. `git clone https://github.com/imranhsayed/frontity-twentynineteen`
 2. `cd frontity-twentynineteen`
 3. Add `@frontity/twentynineteen-theme` as you dependency in package.json of project's root directory.
@@ -50,14 +51,9 @@
 
 ## 2.For existing project
 
-1. Add the theme package to the dependencies in package.json of root of your project.
-```ruby
-  "dependencies": {
-    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
-  }
-   ```
-   
-2. `cd packages`
+### Using npm
+1. Go to the package directory of your Frontity's project
+2. `npm install @frontity/twentynineteen-theme`
 
 3. Add the package name to the `frontity-settings.js`
 ```ruby
@@ -65,18 +61,19 @@
     {
       "name": "@frontity/twentynineteen-theme",
 ```
-4. `npm install && npx frontity dev` ( from the root of your project )
+2. `npm install && npx frontity dev` ( from the root of your project )
 
-5. Your site will be available at `http://localhost:3000/`
+3. Your site will be available at `http://localhost:3000/`
 
+## More info :clipboard:
 
-## Instructions :clipboard:
+This is the beta version. Some features will be added in the final release, like:
 
-Please follow the README for using the project/theme.
+1. More button smaller screens.
 
 ## Common Commands :computer:
 
-- `npx frontity dev` Runs server in development mode ( from the root of your project )
+- `npx frontity dev` ( inside project's root ) Runs server in development mode ( from the root of your project )
 
 ## Credits :white_flower:
 

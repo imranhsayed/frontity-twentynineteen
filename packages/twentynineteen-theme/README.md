@@ -65,6 +65,11 @@
 
 3. Your site will be available at `http://localhost:3000/`
 
+## More info :clipboard:
+
+This is the beta version. Some features will be added in the final release, like:
+
+1. More button smaller screens.
 
 ## Common Commands :computer:
 
