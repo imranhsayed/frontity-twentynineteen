@@ -4,7 +4,13 @@
 
 # Demo :video_camera:
 
-![](packages/twentynineteen-theme/demo.gif)
+![](demo.gif)
+
+# Demo 2 :video_camera:
+
+> Speed and performance comparision between the same twentynineteen theme on WordPress( in PHP ) vs Frontity ( in React )
+
+![](demo-compare.gif)
 
 # Installation :wrench:
 
