@@ -4,7 +4,7 @@
 
 # Demo :video_camera:
 
-![](packages/twentynineteen-theme/demo.gif)
+![](demo.gif)
 
 # Installation :wrench:
 
