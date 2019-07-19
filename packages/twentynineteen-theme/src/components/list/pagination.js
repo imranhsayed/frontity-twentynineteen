@@ -5,7 +5,7 @@ import PreviousIcon from "../icons/previous-icon";
 import NextIcon from "../icons/next-icon";
 
 const Pagination = ( { state, actions, libraries } ) => {
-	
+
 	const { totalPages }        = state.source.get( state.router.link );
 	const { path, page, query } = libraries.source.parse( state.router.link );
 
