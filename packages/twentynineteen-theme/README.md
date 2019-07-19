@@ -1,10 +1,10 @@
 # Twentynineteen Frontity Theme Project :art:
 
-:fire: A WordPress Twentynineteen Theme Project in React for Frontity
+:fire: A WordPress Twentynineteen Theme in React for Frontity
 
 # Demo :video_camera:
 
-![](demo.gif)
+![Demo Link](https://codeytek.com/frontity-twentynineteen/)
 
 # Installation :wrench:
 
@@ -86,6 +86,6 @@ This is the beta version. Some features will be added in the final release, like
 
 ## License :scroll:
 
-[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
+![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)
 
 - **[GPLv2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html)**

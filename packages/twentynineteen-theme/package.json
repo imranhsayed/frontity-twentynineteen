@@ -1,6 +1,6 @@
 {
   "name": "@frontity/twentynineteen-theme",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A WordPress Twentynineteen Theme in React for Frontity",
   "author": "Imran Sayed, Smit Patadiya",
   "keywords": [
@@ -14,7 +14,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/imranhsayed/twentynineteen-frontity-theme"
+    "url": "https://github.com/imranhsayed/frontity-twentynineteen"
   },
   "bugs": {
     "url": "https://community.frontity.org"
