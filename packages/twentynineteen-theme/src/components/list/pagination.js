@@ -25,38 +25,96 @@ const Pagination = ( { state, actions, libraries } ) => {
 		});
 	};
 
-	const renderPagination = ( totalPages ) => {
+	/**
+	 * Handle Pagination.
+	 *
+	 * @param {int} index Index.
+	 * @return {Array} Page no array for pagination content.
+	 */
+	const c = ( index ) => {
 
 		let content = '';
-		let pagination = [];
+		const pageNo = index + 1;
 
-		for ( let i = 0; i < totalPages; i++ ) {
-			const pageNo = i + 1;
-			if ( page !== pageNo ) {
-				content = (
-					<Link className="page-numbers" link={ getPageLink( i + 1 ) }>
-						<Text>{ i + 1 }</Text>
-					</Link>
-				);
-			} else {
-				content = (
-					<span className="page-numbers current">
-						<Text>{ i + 1 }</Text>
-					</span>
-				)
-			}
-			pagination.push( content );
+		if ( page !== pageNo ) {
+			content = (
+				<Link className="page-numbers" link={ getPageLink( index + 1 ) }>
+					<Text>{ index + 1 }</Text>
+				</Link>
+			);
+		} else {
+			content = (
+				<span className="page-numbers current">
+						<Text>{ index + 1 }</Text>
+				</span>
+			)
 		}
 
-		return pagination;
+		return content;
 	};
 
-	const pagination = renderPagination( totalPages );
+	const createPaginationArray = ( page, totalPages ) => {
+
+		const currentPage = page;
+
+		let loopableArray = [] ;
+
+		if ( 0 < ( currentPage - 2 ) ) {
+			loopableArray.push( ( currentPage - 2 ) );
+		}
+
+		if ( 0 < ( currentPage - 1 ) ) {
+			loopableArray.push( ( currentPage - 1 ) );
+		}
+
+		loopableArray.push( currentPage );
+
+		if ( totalPages >= ( currentPage + 1 ) ) {
+			loopableArray.push( ( currentPage + 1 ) );
+		}
+
+		if ( totalPages >= ( currentPage + 2 ) ) {
+			loopableArray.push( ( currentPage + 2 ) );
+		}
+
+		/**
+		 * Push the ... at the beginning of the array
+		 * only if the difference of between the 1st and 2nd item is greater than 1.
+		 */
+		if ( 1 < (loopableArray[0] - 1 )  ) {
+			loopableArray.unshift( '...' );
+		}
+
+		/**
+		 * Push the ... at the end of the array.
+		 * only if the difference of between the last and 2nd last item is greater than 1.
+		 */
+		if ( 1 < ( totalPages - loopableArray[ loopableArray.length - 2 ] )  ) {
+			loopableArray.push( '...' );
+		}
+
+		// Push first item in the array if it does not already exists.
+		if ( -1 === loopableArray.indexOf( 1 ) ) {
+			loopableArray.unshift( 1 );
+		}
+
+
+		// Push last item in the array if it does not already exists.
+		if ( -1 === loopableArray.indexOf( totalPages ) ) {
+			loopableArray.push( totalPages );
+		}
+
+		return loopableArray;
+
+	};
+
+	const paginationArray = createPaginationArray();
 
 	// Fetch the next page if it hasn't been fetched yet.
 	useEffect( () => {
 		if ( isThereNextPage ) actions.source.fetch( getPageLink( page + 1 ) );
 	}, [] );
+
 
 	return (
 		<PaginationContainer className="tn-pagination">
@@ -67,12 +125,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 			) }
 
 			<>
-				{ pagination && pagination.map( ( item, index ) => (
-					<React.Fragment key={ `${ index }-pagination` }>
-						{ item }
-					</React.Fragment>
-				) )
-				}
+			
 			</>
 
 			{ isThereNextPage && (
