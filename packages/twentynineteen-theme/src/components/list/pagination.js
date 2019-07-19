@@ -117,7 +117,8 @@ const Pagination = ( { state, actions, libraries } ) => {
 		<PaginationContainer className="tn-pagination">
 			{ isTherePreviousPage && (
 				<Link className="pagination-links" link={ getPageLink( page - 1 ) }>
-					<Text><PreviousIcon/> Newer posts</Text>
+					<PreviousIcon />
+					<span className="nav-prev-text">Newer posts</span>
 				</Link>
 			) }
 
@@ -135,7 +136,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 						)
 					} else {
 						return (
-							<span className="page-numbers current">
+							<span className={ `${ '...' !== item ? 'current' : 'dots' } page-numbers` }>
 								<Text>{ item }</Text>
 							</span>
 						)
@@ -145,7 +146,8 @@ const Pagination = ( { state, actions, libraries } ) => {
 
 			{ isThereNextPage && (
 				<Link className="pagination-links" link={ getPageLink( page + 1 ) }>
-					<Text> Older posts <NextIcon/></Text>
+					<span className="nav-next-text">Older posts</span>
+					<NextIcon />
 				</Link>
 			) }
 		</PaginationContainer>
@@ -155,25 +157,15 @@ const Pagination = ( { state, actions, libraries } ) => {
 export default connect( Pagination );
 
 const PaginationContainer = styled.div`
-
-    margin: calc(3 * 1rem) calc(10% + 60px) calc(1rem / 2);
-	& .pagination-links {
-		display: inline-block;
-	    margin-left: 0 !important;
-	    font-size: 0.88889em;
-	    color: #0073aa;
-	    transition: color 110ms ease-in-out;
-	    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-	    font-weight: 700;
-	    letter-spacing: -0.02em;
-	    line-height: 1.2;
-	    -webkit-font-smoothing: antialiased;
-	}
-
-		span {
-			padding: 0;
-		}
-	}
+	
+	padding: 0 calc(.5 * 1rem);
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-weight: 700;
+	font-size: 0.88889em;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 `;
 
 const Text = styled.span`
