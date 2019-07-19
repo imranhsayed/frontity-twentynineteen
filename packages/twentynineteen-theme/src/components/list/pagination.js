@@ -116,7 +116,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 	return (
 		<PaginationContainer className="tn-pagination">
 			{ isTherePreviousPage && (
-				<Link className="pagination-links" link={ getPageLink( page - 1 ) }>
+				<Link className="pagination-links prev" link={ getPageLink( page - 1 ) }>
 					<PreviousIcon />
 					<span className="nav-prev-text">Newer posts</span>
 				</Link>
@@ -136,16 +136,18 @@ const Pagination = ( { state, actions, libraries } ) => {
 						)
 					} else {
 						return (
-							<span className={ `${ '...' !== item ? 'current' : 'dots' } page-numbers` }>
-								<Text>{ item }</Text>
-							</span>
+							<React.Fragment key={ `current-${index}` }>
+								<span className={ `${ '...' !== item ? 'current' : 'dots' } page-numbers` }>
+									<Text>{ item }</Text>
+								</span>
+							</React.Fragment>
 						)
 					}
 				} ) }
 			</>
 
 			{ isThereNextPage && (
-				<Link className="pagination-links" link={ getPageLink( page + 1 ) }>
+				<Link className="pagination-links next" link={ getPageLink( page + 1 ) }>
 					<span className="nav-next-text">Older posts</span>
 					<NextIcon />
 				</Link>
@@ -158,7 +160,7 @@ export default connect( Pagination );
 
 const PaginationContainer = styled.div`
 	
-	padding: 0 calc(.5 * 1rem);
+	padding: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 700;
 	font-size: 0.88889em;
@@ -170,5 +172,4 @@ const PaginationContainer = styled.div`
 
 const Text = styled.span`
   display: inline-block;
-  margin-top: 16px;
 `;
