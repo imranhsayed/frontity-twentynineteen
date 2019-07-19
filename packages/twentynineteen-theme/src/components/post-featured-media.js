@@ -2,11 +2,11 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Image from "@frontity/components/image";
 
-const FeaturedMedia = ( { state, id } ) => {
+const PostFeaturedMedia = ( { state, id } ) => {
   const media = state.source.attachment[id];
 
   if ( !media ) return null;
-
+  
   const srcset =
     Object.values( media.media_details.sizes )
       // Get the url and width of each size.
@@ -21,48 +21,26 @@ const FeaturedMedia = ( { state, id } ) => {
       ) || null;
 
   return (
-    <Container>
       <StyledImage
         alt={ media.title.rendered }
         src={ media.source_url }
         srcSet={ srcset }
      />
-    </Container>
   );
 };
 
-export default connect( FeaturedMedia );
-
-const Container = styled.div`
-  margin: 1rem 0;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  
-  &::before, &::after {
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    content: "\\020";
-    pointer-events: none;
-    background: #0073aa;
-    mix-blend-mode: screen;
-    opacity: 0.1;
-    z-index: 2;
-  }
-
-  &::after {
-    mix-blend-mode: multiply;
-    opacity: 1;
-    z-index: 3;
-  }
-`;
+export default connect( PostFeaturedMedia );
 
 const StyledImage = styled( Image )`
-  height: auto;
+  height: 100%;
+  left: 0;
+  max-width: 1000%;
+  min-height: 100%;
+  min-width: 100vw;
+  position: absolute;
   width: 100%;
+  z-index: 1;
   object-fit: cover;
+  top: 0;
+  filter: grayscale(100%);
 `;

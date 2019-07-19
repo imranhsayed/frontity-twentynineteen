@@ -1,84 +1,108 @@
 import React, { useEffect } from "react";
 import { connect, styled } from "frontity";
-import Link from "./link";
 import List from "./list";
-import FeaturedMedia from "./featured-media";
-import AuthorIcon from "./icons/author-icon";
-import DateIcon from "./icons/date-icon";
+import Header from "./header";
+import PostFeaturedMedia from "./post-featured-media";
+import Author from "./entry-meta/author";
+import PostedOn from "./entry-meta/posted-on";
+import Categories from "./entry-meta/categories";
+import Tags from "./entry-meta/tags";
 
-const Post = ({ state, actions, libraries }) => {
+
+const Post = ( { state, actions, libraries } ) => {
   // Get info of current post.
   const data = state.source.get(state.router.link);
   // Get the the post.
   const post = state.source[data.type][data.id];
-  // Get the author.
-  const author = state.source.author[post.author];
-  // Get a date for humans.
-  const date = new Date(post.date);
 
   // Prefetch home posts and the list component.
-  useEffect(() => {
+  useEffect( () => {
     actions.source.fetch("/");
     List.preload();
-  }, []);
-
-  return data.isReady ? (
+  }, [] );
+  
+  const headerFeaturedImageClass = ( data.isReady && state.theme.featured.showOnPost && post.featured_media ) ? 'has-featured-image' : 'empty-featured-image';
+  
+  return (
+    <>
+    <div className={ headerFeaturedImageClass }>
+      <Header/>
+        { data.isReady ? (
+          <div className="site-featured-image">
+            { state.theme.featured.showOnPost ? (
+              <PostFeaturedMedia id={ post.featured_media }/>
+            ) : null }
+            <div className="entry-header">
+              <Title className="entry-title" dangerouslySetInnerHTML={ { __html: post.title.rendered } }/>
+              { data.isPost ? (
+                <EntryMeta className="entry-meta">
+                  <Author authorId={ post.author }/>
+                  <PostedOn post={ post }/>
+                </EntryMeta>
+              ) : null }
+            </div>
+          </div>
+        ) : null }
+      
+      
+    </div>
+    
+    { data.isReady ? (
     <Section id="primary" className="content-area hfeed">
-		<article className="entry">
-			<div className="entry-header">
-				<Title className="entry-title" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-			</div>
-			{data.isPost && (
-				// Author And Date.
-				<EntryFooter className="entry-footer hee">
-					<StyledLink link={ author.link }>
-						<Author className="byline">
-							<AuthorIcon/><span>{ author.name }</span>
-						</Author>
-					</StyledLink>
-					<Fecha className="posted-on">
-						{ ' ' }
-						<DateIcon/><span>{ date.toDateString() }</span>
-					</Fecha>
-				</EntryFooter>
-			)}
-			{state.theme.featured.showOnPost && (
-				<FeaturedMedia id={post.featured_media} />
-			)}
-			<Body className="entry-content">
-				<libraries.html2react.Component html={post.content.rendered} />
-			</Body>
-		</article>
+      <article className="entry">
+        <Body className="entry-content">
+          <libraries.html2react.Component html={ post.content.rendered }/>
+          { data.isPost ? (
+            <EntryFooter className="entry-footer">
+                <Author authorId={ post.author }/>
+                <PostedOn post={ post }/>
+                <Categories cats={ post.categories }/>
+                <Tags tags={ post.tags }/>
+            </EntryFooter>
+          ) : null }
+        </Body>
+      </article>
     </Section>
-  ) : null;
+  ) : null }
+  </>);
 };
 
-export default connect(Post);
+export default connect( Post );
 
 const Section = styled.div`
   margin: 0;
 `;
 
-const EntryFooter = styled.div`
-	margin-bottom: 0 !important;
+const EntryMeta = styled.div`
+  margin-bottom: 1rem !important;
+  color: #767676;
+
+  & .svg-icon{
+      margin-right: 0.5em;
+  }
+
+  @media ( min-width: 768px ) {
+      margin-bottom: 0 !important;
+  }
+`;
+
+const EntryFooter = styled.footer`
+	margin-bottom: 1rem !important;
+  color: #767676;
+
+  & .svg-icon{
+      margin-right: 0.5em;
+  }
+
+  @media ( min-width: 768px ) {
+      margin-bottom: 0 !important;
+  }
 `;
 
 const Title = styled.h1``;
 
-const StyledLink = styled(Link)`
-  padding: 15px 0;
-`;
-
-const Author = styled.p`
-  display: inline;
-`;
-
-const Fecha = styled.p`
-  display: inline;
-`;
-
 const Body = styled.div`
-
+  
   * {
     max-width: 100%;
   }
@@ -95,8 +119,8 @@ const Body = styled.div`
 
   figure {
     margin: 24px auto;
-    /* next line overrides an inline style of the figure element. */
-    width: 100% !important;
+    /* Next line overrides an inline style of the figure element. */
+    width: 100%;
 
     figcaption {
       font-size: 0.7em;
@@ -109,10 +133,9 @@ const Body = styled.div`
   }
 
   blockquote {
-    margin: 16px 0;
-    background-color: rgba(0, 0, 0, 0.1);
-    border-left: 4px solid rgba(12, 17, 43);
-    padding: 4px 16px;
+    margin: 32px 0;
+    border-left: 2px solid #0073aa;
+    padding: 0 0 0 1em;
   }
 
   a {
@@ -123,7 +146,7 @@ const Body = styled.div`
 
   /* WordPress Core Align Classes */
 
-  @media (min-width: 420px) {
+  @media ( min-width: 420px ) {
     img.aligncenter,
     img.alignleft,
     img.alignright {

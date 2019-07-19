@@ -2,17 +2,17 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 
-const Nav = ({ state }) => (
+const Nav = ( { state } ) => (
   <Container id="site-navigation" className="main-navigation" ariaLabel="Top Menu">
-    {state.theme.menu.map(([name, link]) => (
-      <Item key={name} isSelected={state.router.link === link}>
-        <Link link={link}>{name}</Link>
+    { state.theme.menu.map( ( [ name, link ] ) => (
+      <Item key={ name } isSelected={ state.router.link === link }>
+        <Link link={ link }>{ name }</Link>
       </Item>
-    ))}
+    ) ) }
   </Container>
 );
 
-export default connect(Nav);
+export default connect( Nav );
 
 const Container = styled.nav`
   list-style: none;
@@ -32,9 +32,8 @@ const Item = styled.div`
 
   & > a {
     display: inline-block;
-    line-height: 1em;
-    border-bottom: 2px solid
-      ${({ isSelected }) => (isSelected ? "#fff" : "transparent")};
+    line-height: 1.125;
+    font-size: 1.125em;
   }
 
   &:first-of-type {
@@ -43,11 +42,5 @@ const Item = styled.div`
 
   &:last-of-type {
     margin-right: 0;
-
-    &:after {
-      content: "";
-      display: inline-block;
-      width: 24px;
-    }
   }
 `;

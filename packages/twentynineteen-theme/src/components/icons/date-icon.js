@@ -12,10 +12,10 @@ const DateIcon = () => (
 		viewBox="0 0 24 24"
 	>
 		<defs>
-			<path id="a" d="M0 0h24v24H0V0z" />
+			<path id="a" d="M0 0h24v24H0V0z"/>
 		</defs>
 		<clipPath id="b">
-			<use href="#a" overflow="visible" />
+			<use href="#a" overflow="visible"/>
 		</clipPath>
 		<path
 			clipPath="url(#b)"
