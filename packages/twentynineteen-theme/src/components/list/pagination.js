@@ -26,36 +26,13 @@ const Pagination = ( { state, actions, libraries } ) => {
 	};
 
 	/**
-	 * Handle Pagination.
+	 * Create pagination array.
 	 *
-	 * @param {int} index Index.
-	 * @return {Array} Page no array for pagination content.
+	 * @param {int} currentPage Current page no.
+	 * @param {int} totalPages Count of total no of pages.
+	 * @return {Array} Array containing the indexes to be looped through to create pagination
 	 */
-	const c = ( index ) => {
-
-		let content = '';
-		const pageNo = index + 1;
-
-		if ( page !== pageNo ) {
-			content = (
-				<Link className="page-numbers" link={ getPageLink( index + 1 ) }>
-					<Text>{ index + 1 }</Text>
-				</Link>
-			);
-		} else {
-			content = (
-				<span className="page-numbers current">
-						<Text>{ index + 1 }</Text>
-				</span>
-			)
-		}
-
-		return content;
-	};
-
-	const createPaginationArray = ( page, totalPages ) => {
-
-		const currentPage = page;
+	const createPaginationArray = ( currentPage, totalPages ) => {
 
 		let loopableArray = [] ;
 
@@ -108,7 +85,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 
 	};
 
-	const paginationArray = createPaginationArray();
+	const paginationArray = createPaginationArray( page, totalPages );
 
 	// Fetch the next page if it hasn't been fetched yet.
 	useEffect( () => {
@@ -125,7 +102,25 @@ const Pagination = ( { state, actions, libraries } ) => {
 			) }
 
 			<>
-			
+				{ paginationArray && paginationArray.map( ( item, index ) => {
+
+					// If item is not equal to '...' and the item value is not equal to current page.
+					if ( ( '...' !== item ) && ( item !== page ) ) {
+						return (
+							<React.Fragment key={ `${ item }-${index}` }>
+								<Link className="page-numbers" link={ getPageLink( item ) }>
+									<Text>{ item }</Text>
+								</Link>
+							</React.Fragment>
+						)
+					} else {
+						return (
+							<span className="page-numbers current">
+								<Text>{ item }</Text>
+							</span>
+						)
+					}
+				} ) }
 			</>
 
 			{ isThereNextPage && (
