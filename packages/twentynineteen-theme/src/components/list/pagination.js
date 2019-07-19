@@ -135,7 +135,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 						)
 					} else {
 						return (
-							<span className="page-numbers current">
+							<span key={ `${ item }-${index}` } className="page-numbers current">
 								<Text>{ item }</Text>
 							</span>
 						)
