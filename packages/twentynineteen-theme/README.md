@@ -4,7 +4,7 @@
 
 # Demo :video_camera:
 
-![Demo Link](https://codeytek.com/frontity-twentynineteen/)
+[Demo Link](https://codeytek.com/frontity-twentynineteen/)
 
 # Installation :wrench:
 
