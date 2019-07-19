@@ -5,8 +5,8 @@ import PreviousIcon from "../icons/previous-icon";
 import NextIcon from "../icons/next-icon";
 
 const Pagination = ( { state, actions, libraries } ) => {
-	// const { totalPages }        = state.source.get( state.router.link );
-	const totalPages = 8;
+	
+	const { totalPages }        = state.source.get( state.router.link );
 	const { path, page, query } = libraries.source.parse( state.router.link );
 
 	const isThereNextPage     = page < totalPages;
@@ -38,7 +38,6 @@ const Pagination = ( { state, actions, libraries } ) => {
 	const createPaginationArray = ( currentPage, totalPages ) => {
 
 		let loopableArray = [] ;
-
 		let countOfDotItems = 0;
 
 		// If there is only one page, return an empty array.
@@ -106,7 +105,9 @@ const Pagination = ( { state, actions, libraries } ) => {
 
 	const paginationArray = createPaginationArray( page, totalPages );
 
-	// Fetch the next page if it hasn't been fetched yet.
+	/**
+	 * Fetch the next page if it hasn't been fetched yet.
+	 */
 	useEffect( () => {
 		if ( isThereNextPage ) actions.source.fetch( getPageLink( page + 1 ) );
 	}, [] );
@@ -152,10 +153,6 @@ const Pagination = ( { state, actions, libraries } ) => {
 };
 
 export default connect( Pagination );
-
-const NavLinkSeparator = styled.span`
-	padding: 1rem;
-`;
 
 const PaginationContainer = styled.div`
 
