@@ -6,7 +6,7 @@ const Footer = () => {
 			<div className="site-info">
 				<a className="site-name" href="https://codeytek.com/frontity-twentynineteen" rel="home">Twentynineteen Frontity Theme</a>,
 				{' '}
-				<a href="https://frontity.org" className="imprint">Proudly powered by Frontity.</a>
+				<a href="https://frontity.org" className="imprint">proudly powered by WordPress &#38; Frontity.</a>
 			</div>
 		</footer>
 	)
