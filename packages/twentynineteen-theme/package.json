@@ -11,7 +11,7 @@
 	"twentynineteen-theme"
   ],
   "homepage": "https://frontity.org",
-  "license": "MIT",
+  "license": "GNU GPL 2",
   "repository": {
     "type": "git",
     "url": "https://github.com/imranhsayed/frontity-twentynineteen"
