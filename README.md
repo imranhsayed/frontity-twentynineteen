@@ -1,6 +1,8 @@
-# Twentynineteen Frontity Theme Project :art:
+# Twenty Nineteen Frontity Theme Project :art:
 
-:fire: A WordPress Twentynineteen Theme Project in React for Frontity
+:fire: A WordPress Twenty Nineteen Theme Project in React for Frontity.
+
+:zap: Check out the [demo site here](https://twentynineteen.frontity.org/).
 
 # Demo :video_camera:
 
@@ -8,7 +10,7 @@
 
 # Demo 2 :video_camera:
 
-> Speed and performance comparision between the same twentynineteen theme on WordPress( in PHP ) vs Frontity ( in React )
+> Speed and performance comparision between the same Twenty Nineteen theme on WordPress (in PHP) vs Frontity (in React).
 
 ![](demo-compare.gif)
 
@@ -83,7 +85,7 @@ This is the beta version. Some features will be added in the final release, like
 
 ## Credits :white_flower:
 
-- Build with love :blue_heart:, using [Fronity's](https://frontity.org) [mars-theme](https://www.npmjs.com/package/@frontity/mars-theme)
+- Build with love :blue_heart:, using [Frontity's](https://frontity.org) [mars-theme](https://www.npmjs.com/package/@frontity/mars-theme)
 
 ## Author
 
