@@ -6563,7 +6563,7 @@ svg {
     .tn-pagination .pagination-links.next {
         padding-right: 0;
     }
-    
+
     .tn-pagination {
         margin: 0 calc(10% + 60px);
     }
@@ -6576,3 +6576,32 @@ svg {
         padding: 1rem 0;
     }
 }
+
+.ftn-featured-img-container {
+	margin: 1rem 0;
+	overflow: hidden;
+	position: relative;
+	display: flex;
+}
+
+.ftn-featured-img-container::before,
+.ftn-featured-img-container::after {
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    content: "\020";
+    pointer-events: none;
+    background: #0073aa;
+    mix-blend-mode: screen;
+    opacity: 0.1;
+    z-index: 2;
+}
+
+.ftn-featured-img-container::after {
+	 mix-blend-mode: multiply;
+	 opacity: 1;
+	 z-index: 3;
+ }

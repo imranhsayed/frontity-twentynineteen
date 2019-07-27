@@ -10,6 +10,7 @@ import globalStyle from '../style.min.css';
 
 const Theme = ( { state } ) => {
   const data = state.source.get( state.router.link );
+
   return (
     <>
       <Head>

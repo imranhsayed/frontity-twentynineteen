@@ -19,7 +19,7 @@ const Item = ( { state, item } ) => (
 				</Link>
 			) : null }
 			<Excerpt dangerouslySetInnerHTML={ { __html: item.excerpt.rendered } }/>
-			
+
 		</article>
 		<div className="entry-footer">
 			<Author authorId={ item.author }/>
