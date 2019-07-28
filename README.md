@@ -16,9 +16,7 @@
 
 # Installation :wrench:
 
-## 1.For new project
-
-### a. By cloning this project.
+### 1. For new project: by cloning this project.
 
 1. `git clone https://github.com/imranhsayed/frontity-twentynineteen`
 2. `cd frontity-twentynineteen`
@@ -26,16 +24,11 @@
  
 4. Your site will now be available at `http://localhost:3000/`
 
-### b. Using Command Line.
+## 2. For new/existing project using npm
 
-1. `npx frontity create my-app && cd my-app/packages`
-2. Add the theme package to the dependencies in package.json of the root of your project.
-```ruby
-  "dependencies": {
-    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
-  }
-```
-3. Add the package name to the `frontity-settings.js`
+1. `npx frontity create my-app && cd my-app`
+2. `npm install @frontity/twentynineteen-theme`
+3. Update the package name to the `frontity-settings.js`
 ```ruby
   "packages": [
     {
@@ -43,22 +36,13 @@
 ```
 4. `npm install && npx frontity dev` ( from project's root directory )
 5. Your site will be available at `http://localhost:3000/`
-
-## 2.For existing project
-
-### Using npm
-1. Go to the package directory of your Frontity's project
-2. `npm install @frontity/twentynineteen-theme`
-
-3. Add the package name to the `frontity-settings.js`
+6. Set the to true to display featured images on Home page and single post page.
 ```ruby
-  "packages": [
-    {
-      "name": "@frontity/twentynineteen-theme",
+      "featured": {
+        "showOnList": true,
+        "showOnPost": true
+      }
 ```
-2. `npm install && npx frontity dev` ( from the root of your project )
-
-3. Your site will be available at `http://localhost:3000/`
 
 ## More info :clipboard:
 
