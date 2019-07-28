@@ -4,6 +4,8 @@
 
 :zap: Check out the [demo site here](https://twentynineteen.frontity.org/).
 
+[Tutorial Video](https://youtu.be/i1LaEDv0PNk)
+
 # Demo :video_camera:
 
 ![](demo.gif)

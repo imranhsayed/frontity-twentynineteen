@@ -6,6 +6,8 @@
 
 # Demo :video_camera:
 
+- [Tutorial Video](https://youtu.be/i1LaEDv0PNk)
+
 ![](demo.gif)
 
 # Demo 2 :video_camera:
