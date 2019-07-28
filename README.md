@@ -22,22 +22,9 @@
 
 1. `git clone https://github.com/imranhsayed/frontity-twentynineteen`
 2. `cd frontity-twentynineteen`
-3. Add `@frontity/twentynineteen-theme` as you dependency in package.json of project's root directory.
-```ruby
-  "dependencies": {
-    "@frontity/twentynineteen-theme": "./packages/twentynineteen-theme"
-  }
-```
-4. Add the package name in `frontity-settings.js`
-```ruby
-  "packages": [
-    {
-      "name": "@frontity/twentynineteen-theme",
-```
-
-5. `npm install && npx frontity dev` ( from the project's root directory )
+3. `npm install && npx frontity dev` ( from the project's root directory )
  
-6. Your site will now be available at `http://localhost:3000/`
+4. Your site will now be available at `http://localhost:3000/`
 
 ### b. Using Command Line.
 
