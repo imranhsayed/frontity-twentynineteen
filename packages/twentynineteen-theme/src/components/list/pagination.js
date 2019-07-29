@@ -116,7 +116,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 	return (
 		<PaginationContainer className="tn-pagination">
 			{ isTherePreviousPage && (
-				<Link className="pagination-links prev" link={ getPageLink( page - 1 ) }>
+				<Link className="pagination-links prev" ariaLabel="Read newer posts" link={ getPageLink( page - 1 ) }>
 					<PreviousIcon />
 					<span className="nav-prev-text">Newer posts</span>
 				</Link>
@@ -145,7 +145,7 @@ const Pagination = ( { state, actions, libraries } ) => {
 			</>
 
 			{ isThereNextPage && (
-				<Link className="pagination-links next" link={ getPageLink( page + 1 ) }>
+				<Link className="pagination-links next" ariaLabel="Read older posts" link={ getPageLink( page + 1 ) }>
 					<span className="nav-next-text">Older posts</span>
 					<NextIcon />
 				</Link>
