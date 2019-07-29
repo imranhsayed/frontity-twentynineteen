@@ -3297,7 +3297,7 @@ body.page .main-navigation {
   }
 }
 
-.main-navigation .main-menu-more:nth-child(n+3) {
+.main-navigation .main-menu-more:nth-of-type(n+3) {
   display: none;
 }
 
@@ -3339,7 +3339,7 @@ body.page .main-navigation {
   list-style: none;
 }
 
-.social-navigation ul.social-links-menu li:nth-child(n+2) {
+.social-navigation ul.social-links-menu li:nth-of-type(n+2) {
   margin-left: 0.1em;
 }
 
