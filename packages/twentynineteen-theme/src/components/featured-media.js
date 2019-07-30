@@ -7,7 +7,6 @@ const FeaturedMedia = ( { state, id } ) => {
 
   if ( !media ) return null;
 
-  //console.warn( media.media_details );
   const srcset =
     Object.values( media.media_details.sizes )
       // Get the url and width of each size.
@@ -21,8 +20,8 @@ const FeaturedMedia = ( { state, id } ) => {
         ""
       ) || null;
     
-    const calculatedImageRatio = media.media_details.height * 100 / media.media_details.width;
-    const imageStyle = { paddingTop: `${calculatedImageRatio}%` };  
+  const calculatedImageRatio = media.media_details.height * 100 / media.media_details.width;
+  const imageStyle = { paddingTop: `${calculatedImageRatio}%` };  
 
   return (
     <Container style={ imageStyle }>
