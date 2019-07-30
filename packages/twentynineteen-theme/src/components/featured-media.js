@@ -19,9 +19,12 @@ const FeaturedMedia = ( { state, id } ) => {
           ),
         ""
       ) || null;
+    
+  const calculatedImageRatio = media.media_details.height * 100 / media.media_details.width;
+  const imageStyle = { paddingTop: `${calculatedImageRatio}%` };  
 
   return (
-    <Container>
+    <Container style={ imageStyle }>
       <StyledImage
         alt={ media.title.rendered }
         src={ media.source_url }
@@ -63,6 +66,11 @@ const Container = styled.div`
 
 const StyledImage = styled( Image )`
   height: auto;
-  width: 100%;
+  width: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width: 100%;
+  max-height: 100%;
   object-fit: cover;
 `;
