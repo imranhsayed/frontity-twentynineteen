@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, styled } from "frontity";
+import { connect, styled, css } from "frontity";
 import Image from "@frontity/components/image";
 
 const FeaturedMedia = ( { state, id } ) => {
@@ -21,10 +21,9 @@ const FeaturedMedia = ( { state, id } ) => {
       ) || null;
     
   const calculatedImageRatio = media.media_details.height * 100 / media.media_details.width;
-  const imageStyle = { paddingTop: `${calculatedImageRatio}%` };  
 
   return (
-    <Container style={ imageStyle }>
+    <Container css={ css(`{ padding-top: ${calculatedImageRatio}% }`) }>
       <StyledImage
         alt={ media.title.rendered }
         src={ media.source_url }
