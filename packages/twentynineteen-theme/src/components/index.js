@@ -19,17 +19,15 @@ const Theme = ({ state }) => {
         <html lang="en" />
       </Head>
       <Global />
-      {!data.isPostType && (
-        <HeadContainer>
-          <Header />
-        </HeadContainer>
-      )}
-      <Body id="content">
-        {data.isFetching && <Loading />}
-        {data.isArchive && <List />}
-        {data.isPostType && <Post />}
-        {data.is404 && <Page404 />}
-      </Body>
+      <Container>
+        {!data.isPostType && <Header />}
+        <main>
+          {data.isFetching && <Loading />}
+          {data.isArchive && <List />}
+          {data.isPostType && <Post />}
+          {data.is404 && <Page404 />}
+        </main>
+      </Container>
       <Footer />
     </ThemeProvider>
   );
@@ -37,6 +35,6 @@ const Theme = ({ state }) => {
 
 export default connect(Theme);
 
-const HeadContainer = styled.div``;
-
-const Body = styled.div``;
+const Container = styled.div`
+  min-height: 100vh;
+`;

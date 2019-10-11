@@ -8,11 +8,11 @@ const List = ({ state }) => {
   const data = state.source.get(state.router.link);
 
   return (
-    <Section id="primary" className="content-area hfeed">
-      <Article className="post entry">
+    <Section id="primary">
+      <Article>
         {/* If the list is an author, we render a title. */}
         {data.isAuthor ? (
-          <Header className="page-title">
+          <Header>
             Author Archives:{" "}
             <PageDescription>
               {state.source.author[data.id].name}
@@ -22,7 +22,7 @@ const List = ({ state }) => {
 
         {/* If the list is a taxonomy or category, we render a title. */}
         {data.isTaxonomy || data.isCategory ? (
-          <Header className="page-title">
+          <Header>
             {data.taxonomy.charAt(0).toUpperCase() + data.taxonomy.slice(1)}{" "}
             Archives:{" "}
             <PageDescription>
@@ -56,6 +56,7 @@ const Header = styled.h3`
   font-family: "Hoefler Text", "Baskerville Old Face", Garamond,
     "Times New Roman", serif;
   font-size: 1.125em;
+  font-weight: normal;
   clear: both;
   margin: 1rem 1rem calc(3 * 1rem);
   color: #767676;
@@ -78,6 +79,10 @@ const Header = styled.h3`
 `;
 
 const PageDescription = styled.span`
+  font-weight: bold;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
   @media (prefers-color-scheme: dark) {
     color: #767676 !important;
   }

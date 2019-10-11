@@ -12,6 +12,7 @@ const settings = {
       name: "@frontity/twentynineteen-theme",
       state: {
         theme: {
+          color: "#0073aa",
           menu: [
             ["Home", "/"],
             ["Nature", "/category/nature/"],

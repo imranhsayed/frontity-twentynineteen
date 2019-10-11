@@ -8,6 +8,18 @@ import PostedOn from "./entry-meta/posted-on";
 import Categories from "./entry-meta/categories";
 import Tags from "./entry-meta/tags";
 
+const PostHeader = ({ post }) => (
+  <PostTitle>
+    <Title dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+    {post.type === "post" ? (
+      <EntryMeta>
+        <Author authorId={post.author} />
+        <PostedOn post={post} />
+      </EntryMeta>
+    ) : null}
+  </PostTitle>
+);
+
 const Post = ({ state, actions, libraries }) => {
   // Get info of current post.
   const data = state.source.get(state.router.link);
@@ -23,52 +35,38 @@ const Post = ({ state, actions, libraries }) => {
     List.preload();
   }, []);
 
-  const headerFeaturedImageClass =
-    data.isReady && state.theme.featured.showOnPost && post.featured_media
-      ? "has-featured-image"
-      : "empty-featured-image";
+  if (!data.isReady) return null;
 
   return (
     <>
-      <HasFeaturedImage className={headerFeaturedImageClass}>
-        <Header />
-        {data.isReady ? (
+      {state.theme.featured.showOnPost ? (
+        <HasFeaturedImage>
+          <Header />
           <SiteFeaturedImage>
-            {state.theme.featured.showOnPost ? (
-              <PostFeaturedMedia id={post.featured_media} />
-            ) : null}
-            <PostTitle>
-              <Title
-                dangerouslySetInnerHTML={{ __html: post.title.rendered }}
-              />
-              {data.isPost ? (
-                <EntryMeta>
-                  <Author authorId={post.author} />
-                  <PostedOn post={post} />
-                </EntryMeta>
-              ) : null}
-            </PostTitle>
+            <PostFeaturedMedia id={post.featured_media} />
           </SiteFeaturedImage>
-        ) : null}
-      </HasFeaturedImage>
+          <PostHeader post={post} />
+        </HasFeaturedImage>
+      ) : (
+        <>
+          <Header />
+          <PostHeader post={post} />
+        </>
+      )}
 
-      {data.isReady ? (
-        <Section id="primary" className="content-area hfeed">
-          <article className="entry">
-            <Main className="entry-content">
-              <Html2React html={post.content.rendered} />
-              {data.isPost ? (
-                <EntryFooter>
-                  <Author authorId={post.author} />
-                  <PostedOn post={post} />
-                  <Categories cats={post.categories} />
-                  <Tags tags={post.tags} />
-                </EntryFooter>
-              ) : null}
-            </Main>
-          </article>
-        </Section>
-      ) : null}
+      <Section id="primary">
+        <Article>
+          <Html2React html={post.content.rendered} />
+          {data.isPost ? (
+            <EntryFooter>
+              <Author authorId={post.author} />
+              <PostedOn post={post} />
+              <Categories cats={post.categories} />
+              <Tags tags={post.tags} />
+            </EntryFooter>
+          ) : null}
+        </Article>
+      </Section>
     </>
   );
 };
@@ -82,15 +80,14 @@ const Section = styled.div`
 
 const EntryMeta = styled.div`
   margin-bottom: 1rem !important;
-  font-size: 1.6875em;
-
-  a {
-    color: white;
-  }
+  color: ${({ theme }) =>
+    theme.featured.showOnPost ? "white" : "rgb(118, 118, 118)"};
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 
   & .svg-icon {
     margin-right: 0.5em;
-    fill: white;
   }
 
   @media (min-width: 768px) {
@@ -100,14 +97,16 @@ const EntryMeta = styled.div`
 
 const EntryFooter = styled.footer`
   margin-bottom: 1rem !important;
-  color: #767676;
+  color: rgb(118, 118, 118);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 
   & .svg-icon {
     margin-right: 0.5em;
   }
 
   & a {
-    color: rgb(118, 118, 118);
     text-decoration: none;
   }
 
@@ -130,10 +129,12 @@ const Title = styled.h1`
   }
 `;
 
-const Main = styled.div`
+const Article = styled.article`
   max-width: calc(100% - 2rem);
   margin: 0px 1rem;
   overflow: hidden;
+  font-family: "Hoefler Text", "Baskerville Old Face", Garamond,
+    "Times New Roman", serif;
 
   @media only screen and (min-width: 768px) {
     max-width: 80%;
@@ -507,10 +508,6 @@ const PostTitle = styled.div`
   @media only screen and (min-width: 768px) {
     margin: calc(3rem) calc(10% + 60px) 0px;
   }
-
-  a {
-    color: white;
-  }
 `;
 
 const HasFeaturedImage = styled.div`
@@ -527,11 +524,9 @@ const HasFeaturedImage = styled.div`
   background-position: center center;
   background-repeat: no-repeat;
   line-height: 2.6875em;
-  font-size: 0.6875em;
 
   & header {
     z-index: 9;
-    font-size: 1.525em;
     line-height: 1.525em;
   }
 

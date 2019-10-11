@@ -21,15 +21,14 @@ const Wrapper = styled.span`
   margin-right: 16px;
 
   & a {
+    color: currentColor;
     font-weight: 500;
-    color: rgb(118, 118, 118);
     font-size: 0.71111em;
     padding: 10px 0px 17px;
   }
 
   & svg {
     margin-right: 0.5em;
-    fill: rgb(118, 118, 118);
     transition: fill 120ms ease-in-out 0s;
     position: relative;
     vertical-align: middle;

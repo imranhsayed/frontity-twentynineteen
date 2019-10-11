@@ -6,7 +6,7 @@ import TagIcon from "../icons/tag-icon";
 const Tags = ({ state, tags }) => (
   <>
     {tags.length > 0 ? (
-      <Wrapper className="tags-links">
+      <Wrapper>
         <TagIcon />
         {tags.map((tagId, index) => {
           const isLast = !!(tags.length === index + 1);
@@ -31,14 +31,12 @@ const Wrapper = styled.span`
 
   & a {
     font-weight: 500;
-    color: rgb(118, 118, 118);
     font-size: 0.71111em;
     padding: 10px 0px 17px;
   }
 
   & svg {
     margin-right: 0.5em;
-    fill: rgb(118, 118, 118);
     transition: fill 120ms ease-in-out 0s;
     position: relative;
     vertical-align: middle;

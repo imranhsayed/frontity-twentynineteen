@@ -4,19 +4,17 @@ import Link from "./link";
 import Nav from "./nav";
 
 const Header = ({ state }) => (
-  <>
-    <Container>
-      <SiteBrandingContainer>
-        <SiteBranding>
-          <StyledLink link="/">
-            <Title>{state.frontity.title}</Title>
-          </StyledLink>
-          <Description>{state.frontity.description}</Description>
-          <Nav />
-        </SiteBranding>
-      </SiteBrandingContainer>
-    </Container>
-  </>
+  <Container>
+    <SiteBrandingContainer>
+      <SiteBranding>
+        <StyledLink link="/">
+          <Title>{state.frontity.title}</Title>
+        </StyledLink>
+        <Description>{state.frontity.description}</Description>
+        <Nav />
+      </SiteBranding>
+    </SiteBrandingContainer>
+  </Container>
 );
 
 export default connect(Header);
@@ -37,7 +35,7 @@ const Container = styled.header`
 
   @media only screen and (min-width: 768px) {
     margin: 0px;
-    padding: 3rem 0px 0px;
+    padding: 3rem 0;
   }
 `;
 

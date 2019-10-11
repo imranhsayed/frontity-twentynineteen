@@ -73,6 +73,7 @@
 ## Contributors
 
 1. [Shaun Guimond](https://twitter.com/shagui88)
+2. [David Arenas](https://twitter.com/darerodz)
 
 ## License :scroll:
 

@@ -96,6 +96,10 @@ const Excerpt = styled.div`
 const EntryFooter = styled.div`
   margin: calc(0rem) 1rem 1rem;
   line-height: 1em;
+  color: rgb(118, 118, 118);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
 
   @media only screen and (min-width: 768px) {
     margin: calc(0rem) calc(10% + 60px) calc(0.5rem);
