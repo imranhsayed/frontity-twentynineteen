@@ -23,6 +23,7 @@ const IconWrapper = styled.span`
   display: inline-block;
   margin-top: 2px;
   vertical-align: middle;
+  fill: #008077;
 `;
 
 export default PreviousIcon;

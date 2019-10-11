@@ -112,16 +112,16 @@ const Pagination = ({ state, actions, libraries }) => {
   }, []);
 
   return (
-    <PaginationContainer className="tn-pagination">
+    <PaginationContainer>
       {isTherePreviousPage && (
-        <Link
-          className="pagination-links prev"
+        <PaginationLinks
+          position="prev"
           ariaLabel="Read newer posts"
           link={getPageLink(page - 1)}
         >
           <PreviousIcon />
-          <span className="nav-prev-text">Newer posts</span>
-        </Link>
+          <NavText>Newer posts</NavText>
+        </PaginationLinks>
       )}
 
       <>
@@ -131,35 +131,30 @@ const Pagination = ({ state, actions, libraries }) => {
             if ("..." !== item && item !== page) {
               return (
                 <React.Fragment key={`${item}-${index}`}>
-                  <Link className="page-numbers" link={getPageLink(item)}>
+                  <PageNumbers link={getPageLink(item)}>
                     <Text>{item}</Text>
-                  </Link>
+                  </PageNumbers>
                 </React.Fragment>
               );
             } else {
               return (
-                <span
-                  key={`${item}-${index}`}
-                  className={`${
-                    "..." !== item ? "current" : "dots"
-                  } page-numbers`}
-                >
+                <CurrentOrDots key={`${item}-${index}`} dots={item === "..."}>
                   <Text>{item}</Text>
-                </span>
+                </CurrentOrDots>
               );
             }
           })}
       </>
 
       {isThereNextPage && (
-        <Link
-          className="pagination-links next"
+        <PaginationLinks
+          position="next"
           ariaLabel="Read older posts"
           link={getPageLink(page + 1)}
         >
-          <span className="nav-next-text">Older posts</span>
+          <NavText>Older posts</NavText>
           <NextIcon />
-        </Link>
+        </PaginationLinks>
       )}
     </PaginationContainer>
   );
@@ -167,8 +162,41 @@ const Pagination = ({ state, actions, libraries }) => {
 
 export default connect(Pagination);
 
+const CurrentOrDots = styled.span`
+  display: inline-block;
+  padding: calc(0.5 * 1rem) ${({ dots }) => (dots ? "0" : "")};
+  @media (min-width: 768px) {
+    ${({ dots }) => (dots ? "padding: 1rem 0;" : "")}
+  }
+`;
+
+const PageNumbers = styled(Link)`
+  padding: calc(0.5 * 1rem);
+  display: inline-block;
+  @media (min-width: 768px) {
+    padding: 1rem;
+  }
+`;
+
+const PaginationLinks = styled(Link)`
+  display: inline-block;
+  @media (min-width: 768px) {
+    padding: 1rem;
+    ${({ position }) =>
+      position === "next" ? "padding-right: 0;" : "padding-left: 0;"}
+  }
+`;
+
+const NavText = styled.span`
+  display: none;
+  @media (min-width: 768px) {
+    display: inline-block;
+  }
+`;
+
 const PaginationContainer = styled.div`
   padding: 0;
+  margin: 0 1rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
@@ -178,6 +206,9 @@ const PaginationContainer = styled.div`
   line-height: 1.2;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @media (min-width: 768px) {
+    margin: 0 calc(10% + 60px);
+  }
 `;
 
 const Text = styled.span`
