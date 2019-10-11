@@ -21,16 +21,6 @@ const Container = styled.nav`
   box-sizing: border-box;
   padding-bottom: 0.125rem;
   flex-flow: row wrap;
-
-  @media screen and (max-width: 1070px) {
-    flex-flow: column wrap !important;
-    align-items: center !important;
-  }
-
-  .featured-image {
-    min-height: 100vh;
-    margin-bottom: 3rem;
-  }
 `;
 
 const Item = styled.div`
