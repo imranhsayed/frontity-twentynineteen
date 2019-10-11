@@ -1,41 +1,40 @@
 import React from "react";
-import { Global, css, connect, styled, Head } from "frontity";
+import { connect, styled, Head } from "frontity";
 import Header from "./header";
 import List from "./list";
 import Post from "./post";
 import Page404 from "./page404.js";
 import Loading from "./loading";
 import Footer from "./footer";
-import globalStyle from '../style.min.css';
+import Global from "./global";
+import { ThemeProvider } from "emotion-theming";
 
-const Theme = ( { state } ) => {
-  const data = state.source.get( state.router.link );
+const Theme = ({ state }) => {
+  const data = state.source.get(state.router.link);
   return (
-    <>
+    <ThemeProvider theme={state.theme}>
       <Head>
-        <title>{ state.frontity.title }</title>
-        <meta name="description" content={ state.frontity.description }/>
-        <html lang="en"/>
+        <title>{state.frontity.title}</title>
+        <meta name="description" content={state.frontity.description} />
+        <html lang="en" />
       </Head>
-	    <Global styles={ css( globalStyle ) }/>
-      { ! data.isPostType && (
-        <HeadContainer>
-          <Header/>
-        </HeadContainer>
-      ) }
-      <Body id="content" className="site-content">
-        { data.isFetching && <Loading/> }
-        { data.isArchive && <List/> }
-        { data.isPostType && <Post/> }
-        { data.is404 && <Page404/> }
-      </Body>
-	    <Footer/>
-    </>
+      <Global />
+      <Container>
+        {!data.isPostType && <Header />}
+        <main>
+          {data.isFetching && <Loading />}
+          {data.isArchive && <List />}
+          {data.isPostType && <Post />}
+          {data.is404 && <Page404 />}
+        </main>
+      </Container>
+      <Footer />
+    </ThemeProvider>
   );
 };
 
-export default connect( Theme );
+export default connect(Theme);
 
-const HeadContainer = styled.div``;
-
-const Body = styled.div``;
+const Container = styled.div`
+  min-height: 100vh;
+`;

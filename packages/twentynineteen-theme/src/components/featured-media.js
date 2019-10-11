@@ -2,46 +2,48 @@ import React from "react";
 import { connect, styled, css } from "frontity";
 import Image from "@frontity/components/image";
 
-const FeaturedMedia = ( { state, id } ) => {
+const FeaturedMedia = ({ state, id }) => {
   const media = state.source.attachment[id];
 
-  if ( !media ) return null;
+  if (!media) return null;
 
   const srcset =
-    Object.values( media.media_details.sizes )
+    Object.values(media.media_details.sizes)
       // Get the url and width of each size.
-      .map( item => [ item.source_url, item.width ] )
+      .map(item => [item.source_url, item.width])
       // Recude them to a string with the format required by `srcset`.
       .reduce(
-        ( final, current, index, array ) =>
+        (final, current, index, array) =>
           final.concat(
-            `${ current.join(" ")}w${ index !== array.length - 1 ? ", " : ""}`
+            `${current.join(" ")}w${index !== array.length - 1 ? ", " : ""}`
           ),
         ""
       ) || null;
-    
-  const calculatedImageRatio = media.media_details.height * 100 / media.media_details.width;
+
+  const calculatedImageRatio =
+    (media.media_details.height * 100) / media.media_details.width;
 
   return (
-    <Container css={ css(`{ padding-top: ${calculatedImageRatio}% }`) }>
+    <Container css={css(`{ padding-top: ${calculatedImageRatio}% }`)}>
       <StyledImage
-        alt={ media.title.rendered }
-        src={ media.source_url }
-        srcSet={ srcset }
-     />
+        alt={media.title.rendered}
+        src={media.source_url}
+        srcSet={srcset}
+      />
     </Container>
   );
 };
 
-export default connect( FeaturedMedia );
+export default connect(FeaturedMedia);
 
 const Container = styled.div`
   margin: 1rem 0;
   overflow: hidden;
   position: relative;
   display: flex;
-  
-  &::before, &::after {
+
+  &::before,
+  &::after {
     position: absolute;
     display: block;
     width: 100%;
@@ -50,7 +52,7 @@ const Container = styled.div`
     left: 0;
     content: "\\020";
     pointer-events: none;
-    background: #0073aa;
+    background: ${({ theme }) => theme.color};
     mix-blend-mode: screen;
     opacity: 0.1;
     z-index: 2;
@@ -63,7 +65,7 @@ const Container = styled.div`
   }
 `;
 
-const StyledImage = styled( Image )`
+const StyledImage = styled(Image)`
   height: auto;
   width: auto;
   position: absolute;

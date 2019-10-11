@@ -1,11 +1,6 @@
 import Theme from "./components";
 import image from "@frontity/html2react/processors/image";
 
-const before = ({ libraries }) => {
-  // We use html2react to process the <img> tags inside the content HTML.
-  libraries.html2react.processors.push(image);
-};
-
 const twentyNineteenTheme = {
   name: "@frontity/twentynineteen-theme",
   roots: {
@@ -13,6 +8,7 @@ const twentyNineteenTheme = {
   },
   state: {
     theme: {
+      color: "#0073aa",
       menu: [],
       featured: {
         showOnList: false,
@@ -21,9 +17,11 @@ const twentyNineteenTheme = {
     }
   },
   actions: {
-    theme: {
-      beforeSSR: before,
-      beforeCSR: before
+    theme: {}
+  },
+  libraries: {
+    html2react: {
+      processors: [image]
     }
   }
 };
