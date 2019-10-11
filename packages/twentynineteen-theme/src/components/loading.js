@@ -4,13 +4,7 @@ import Loader from "react-spinners/ScaleLoader";
 
 const Loading = () => (
   <Container>
-    <Loader
-      color="#008077"
-      radius={0}
-      margin="3px"
-      width={5}
-      height={25}
-   />
+    <Loader color="#008077" radius={0} margin="3px" width={5} height={25} />
   </Container>
 );
 

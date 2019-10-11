@@ -7,18 +7,17 @@ import Page404 from "./page404.js";
 import Loading from "./loading";
 import Footer from "./footer";
 
-
-const Theme = ( { state } ) => {
-  const data = state.source.get( state.router.link );
+const Theme = ({ state }) => {
+  const data = state.source.get(state.router.link);
   return (
     <>
       <Head>
-        <title>{ state.frontity.title }</title>
-        <meta name="description" content={ state.frontity.description }/>
-        <html lang="en"/>
-
+        <title>{state.frontity.title}</title>
+        <meta name="description" content={state.frontity.description} />
+        <html lang="en" />
       </Head>
-      <Global styles={css`
+      <Global
+        styles={css`
 
             h1,
             h2,
@@ -589,24 +588,25 @@ const Theme = ( { state } ) => {
             }
             }
 
-      `}/>
-      { ! data.isPostType && (
+      `}
+      />
+      {!data.isPostType && (
         <HeadContainer>
-          <Header/>
+          <Header />
         </HeadContainer>
-      ) }
+      )}
       <Body id="content">
-        { data.isFetching && <Loading/> }
-        { data.isArchive && <List/> }
-        { data.isPostType && <Post/> }
-        { data.is404 && <Page404/> }
+        {data.isFetching && <Loading />}
+        {data.isArchive && <List />}
+        {data.isPostType && <Post />}
+        {data.is404 && <Page404 />}
       </Body>
-	    <Footer/>
+      <Footer />
     </>
   );
 };
 
-export default connect( Theme );
+export default connect(Theme);
 
 const HeadContainer = styled.div``;
 

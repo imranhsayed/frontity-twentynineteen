@@ -2,17 +2,17 @@ import React from "react";
 import { connect, styled } from "frontity";
 import Link from "./link";
 
-const Nav = ( { state } ) => (
+const Nav = ({ state }) => (
   <Container id="site-navigation" ariaLabel="Top Menu">
-    { state.theme.menu.map( ( [ name, link ] ) => (
-      <Item key={ name } isSelected={ state.router.link === link }>
-        <Link link={ link }>{ name }</Link>
+    {state.theme.menu.map(([name, link]) => (
+      <Item key={name} isSelected={state.router.link === link}>
+        <Link link={link}>{name}</Link>
       </Item>
-    ) ) }
+    ))}
   </Container>
 );
 
-export default connect( Nav );
+export default connect(Nav);
 
 const Container = styled.nav`
   list-style: none;
@@ -22,15 +22,15 @@ const Container = styled.nav`
   padding-bottom: 0.125rem;
   flex-flow: row wrap;
 
-@media screen and (max-width: 1070px) {
-  flex-flow: column wrap !important;
-  align-items: center !important;
-}
+  @media screen and (max-width: 1070px) {
+    flex-flow: column wrap !important;
+    align-items: center !important;
+  }
 
-.featured-image {
-  min-height: 100vh;
-  margin-bottom: 3rem;
-}
+  .featured-image {
+    min-height: 100vh;
+    margin-bottom: 3rem;
+  }
 `;
 
 const Item = styled.div`
@@ -51,7 +51,8 @@ const Item = styled.div`
     text-decoration: none;
     font-weight: 700;
     font-size: 1.125em;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   }
 
   &:first-of-type {
@@ -61,6 +62,4 @@ const Item = styled.div`
   &:last-of-type {
     margin-right: 0;
   }
-
-
 `;
