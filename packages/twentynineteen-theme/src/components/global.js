@@ -1,7 +1,7 @@
 import React from "react";
-import { Global, css } from "frontity";
+import { connect, Global, css } from "frontity";
 
-const GlobalCss = () => (
+const GlobalCss = ({ state }) => (
   <Global
     styles={css`
 
@@ -13,19 +13,6 @@ const GlobalCss = () => (
             h6, p, body, article, html {
               font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
             }
-
-            ::-webkit-scrollbar {
-              width: 12px;
-              background: #999999;
-            }
-            ::-webkit-scrollbar-thumb {
-              background: #008077;
-             -webkit-border-radius: 2px;
-             -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
-           }
-            ::-webkit-scrollbar-corner {
-              background: #767676;
-           }
 
            /**
             * 1. Correct the line height in all browsers.
@@ -398,7 +385,7 @@ const GlobalCss = () => (
       a {
         text-decoration: none;
         transition: color 110ms ease-in-out;
-        color: #008077;
+        color: ${state.theme.color};
       }
 
 
@@ -412,7 +399,7 @@ const GlobalCss = () => (
       }
 
       a:hover, a:active {
-      color: #008077;
+      color: ${state.theme.color};
       outline: 0;
       text-decoration: none;
       }
@@ -564,7 +551,7 @@ const GlobalCss = () => (
                 }
 
             ::-webkit-scrollbar-thumb {
-                background: #008077;
+                background: ${state.theme.color};
                 -webkit-border-radius: 2px;
                 -webkit-box-shadow: 0px 1px 2px rgba(100, 100, 100, 0.75);
             }
@@ -578,4 +565,4 @@ const GlobalCss = () => (
   />
 );
 
-export default GlobalCss;
+export default connect(GlobalCss);

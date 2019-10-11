@@ -8,6 +8,7 @@ const twentyNineteenTheme = {
   },
   state: {
     theme: {
+      color: "#0073aa",
       menu: [],
       featured: {
         showOnList: false,

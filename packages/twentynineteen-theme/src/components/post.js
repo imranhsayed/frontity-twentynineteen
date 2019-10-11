@@ -112,7 +112,7 @@ const EntryFooter = styled.footer`
   }
 
   & a:hover {
-    color: #008077;
+    color: ${({ theme }) => theme.color};
   }
 
   @media (min-width: 768px) {
@@ -176,7 +176,7 @@ const Main = styled.div`
 
   blockquote {
     margin: 32px 0;
-    border-left: 2px solid #008077;
+    border-left: 2px solid ${({ theme }) => theme.color};
     padding: 0 0 0 1em;
   }
 
@@ -200,7 +200,7 @@ const Main = styled.div`
 
   a {
     transition: color 110ms ease-in-out;
-    color: #008077;
+    color: ${({ theme }) => theme.color};
     text-decoration: underline;
   }
 
@@ -340,7 +340,7 @@ const Main = styled.div`
   }
 
   & .gallery-item > div > a:focus {
-    box-shadow: 0 0 0 2px #008077;
+    box-shadow: 0 0 0 2px ${({ theme }) => theme.color};
   }
 
   /*Captions*/
@@ -564,7 +564,7 @@ const SiteFeaturedImage = styled.div`
     mix-blend-mode: multiply;
     opacity: 0.8;
     z-index: 3;
-    background: rgb(0, 128, 119);
+    background: ${({ theme }) => theme.color};
   }
 
   &::before {
@@ -579,10 +579,6 @@ const SiteFeaturedImage = styled.div`
     mix-blend-mode: multiply;
     opacity: 0.5;
     z-index: 3;
-    background: rgb(0, 128, 119);
-  }
-
-   {
-    display: block;
+    background: ${({ theme }) => theme.color};
   }
 `;

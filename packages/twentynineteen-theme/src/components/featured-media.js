@@ -52,7 +52,7 @@ const Container = styled.div`
     left: 0;
     content: "\\020";
     pointer-events: none;
-    background: #0073aa;
+    background: ${({ theme }) => theme.color};
     mix-blend-mode: screen;
     opacity: 0.1;
     z-index: 2;

@@ -1,14 +1,20 @@
 import React from "react";
-import { styled } from "frontity";
+import { connect, styled } from "frontity";
 import Loader from "react-spinners/ScaleLoader";
 
-const Loading = () => (
+const Loading = ({ state }) => (
   <Container>
-    <Loader color="#008077" radius={0} margin="3px" width={5} height={25} />
+    <Loader
+      color={state.theme.color}
+      radius={0}
+      margin="3px"
+      width={5}
+      height={25}
+    />
   </Container>
 );
 
-export default Loading;
+export default connect(Loading);
 
 const Container = styled.div`
   width: 800px;

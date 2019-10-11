@@ -1,5 +1,5 @@
 import React from "react";
-import { connect, styled } from "frontity";
+import { connect, styled, css } from "frontity";
 import Link from "./link";
 
 const Nav = ({ state }) => (
@@ -37,7 +37,7 @@ const Item = styled.div`
     font-size: 1.25em;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #008077;
+    color: ${({ theme }) => theme.color};
     text-decoration: none;
     font-weight: 700;
     font-size: 1.125em;

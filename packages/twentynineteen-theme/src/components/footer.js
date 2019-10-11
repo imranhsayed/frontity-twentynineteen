@@ -46,7 +46,7 @@ const SiteInfoLinks = styled.a`
   padding: 10px 0px 17px;
 
   :hover {
-    color: #008077;
+    color: ${({ theme }) => theme.color};
   }
 `;
 

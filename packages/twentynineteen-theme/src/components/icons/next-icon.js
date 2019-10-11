@@ -23,7 +23,7 @@ const IconWrapper = styled.span`
   display: inline-block;
   margin-top: 2px;
   vertical-align: middle;
-  fill: #008077;
+  fill: ${({ theme }) => theme.color};
 `;
 
 export default NextIcon;
