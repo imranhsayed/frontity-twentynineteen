@@ -8,22 +8,33 @@ const Author = ( { state, authorId } ) => {
     const author = state.source.author[authorId];
 
     return (
-        <Wrapper className="byline">
+        <Wrapper>
             <AuthorIcon/>
             <Link link={ author.link }>{ author.name }</Link>
         </Wrapper>
     );
 };
 
-export default connect( Author );
+export default connect( Author);
 
 const Wrapper = styled.span`
 	display: inline;
-	margin-right: 16px;
+    margin-right: 16px;
 	
 	& a {
-	    font-weight: 500;
-	}
+        font-weight: 500;
+        color: rgb(118, 118, 118);
+        font-size: 0.71111em;
+        padding: 10px 0px 17px;
+    }
+    
+    & svg {
+        margin-right: 0.5em;
+        fill: rgb(118, 118, 118);
+        transition: fill 120ms ease-in-out 0s;
+        position: relative;
+        vertical-align: middle;
+    }
 `;
 
 

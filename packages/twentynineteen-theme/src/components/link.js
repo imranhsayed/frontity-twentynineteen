@@ -1,7 +1,7 @@
 import React from "react";
 import { connect, styled } from "frontity";
 
-const Link = ( { actions, link, className, ariaLabel, children } ) => {
+const Link = ( { actions, link, className, children } ) => {
   const onClick = event => {
     // Do nothing if it's an external link
     if ( link.startsWith( "http" ) ) return;
@@ -13,7 +13,7 @@ const Link = ( { actions, link, className, ariaLabel, children } ) => {
   };
 
   return (
-    <LinkEl href={ link } onClick={ onClick } className={ className } aria-label={ ariaLabel }>
+    <LinkEl href={ link } onClick={ onClick } className={ className }>
       { children }
     </LinkEl>
   );
@@ -24,6 +24,7 @@ const LinkEl = styled.a`
     outline: thin dotted;
     text-decoration: underline;
   }
+
 `;
 
 export default connect(Link);

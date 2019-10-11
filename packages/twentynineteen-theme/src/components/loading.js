@@ -5,11 +5,11 @@ import Loader from "react-spinners/ScaleLoader";
 const Loading = () => (
   <Container>
     <Loader
-      color="rgba(12, 17, 43, 0.3)"
+      color="#008077"
       radius={0}
       margin="3px"
-      width={4}
-      height={24}
+      width={5}
+      height={25}
    />
   </Container>
 );
@@ -17,7 +17,7 @@ const Loading = () => (
 export default Loading;
 
 const Container = styled.div`
-  width: 100%;
+  width: 800px;
   margin: 0;
   padding: 24px;
   display: flex;

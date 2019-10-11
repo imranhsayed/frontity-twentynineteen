@@ -7,11 +7,12 @@ import PostedOn from "../entry-meta/posted-on";
 import Categories from "../entry-meta/categories";
 import Tags from "../entry-meta/tags";
 
+
 const Item = ( { state, item } ) => (
 	<>
-		<article className="entry-header">
-			<Title className="entry-title">
-				<Link link={ item.link } ><span dangerouslySetInnerHTML={ { __html: item.title.rendered } }/></Link>
+		<EntryHeader>
+			<Title>
+				<Link link={ item.link } aria-label={ item.title } ><span dangerouslySetInnerHTML={ { __html: item.title.rendered } }/></Link>
 			</Title>
 			{ state.theme.featured.showOnList ? (
 				<Link link={ item.link } >
@@ -20,21 +21,60 @@ const Item = ( { state, item } ) => (
 			) : null }
 			<Excerpt dangerouslySetInnerHTML={ { __html: item.excerpt.rendered } }/>
 			
-		</article>
-		<div className="entry-footer">
+		</EntryHeader>
+		<EntryFooter>
 			<Author authorId={ item.author }/>
 			<PostedOn post={ item }/>
 			<Categories cats={ item.categories.slice( 0, 2 ) }/>
 			<Tags tags={ item.tags.slice( 0, 2 ) }/>
-		</div>
+		</EntryFooter>
 	</>
 );
 
 export default connect( Item );
 
-const Title = styled.h1`
+
+const EntryHeader = styled.article`
+position: relative;
+margin: calc(3rem) 1rem 1rem;
+line-height: 1.6775em;
+
+& a {
 	color: #111;
-	margin: calc( 3 * 1rem ) 0 1rem !important;
+	font-size: 0.7em;
+	letter-spacing: -0.02em;
+}
+
+@media (prefers-color-scheme: dark) {
+	& a {
+   color: white;
+   }
+}
+
+@media only screen and (min-width: 768px) {
+	margin: calc(3rem) calc(10% + 60px) calc(0.5rem);
+	
+	& a {
+		font-size: 0.825em;
+	}
+}
+
+`;
+
+const Title = styled.h1`
+	
+	
+	margin: 0px 0 1rem !important;
+
+	&:before {
+		content: " ";
+		display: block;
+		height: 2px;
+		width: 1em;
+		background: rgb(118, 118, 118);
+		margin: 1rem 0px;
+	}
+
 `;
 
 const Excerpt = styled.div`
@@ -45,6 +85,7 @@ const Excerpt = styled.div`
 
   & p {
 	  margin: 32px 0;
+	  font-family: NonBreakingSpaceOverride, "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
   }
 
   @media only screen and ( min-width: 768px ) {
@@ -52,6 +93,18 @@ const Excerpt = styled.div`
   }
   
   @media only screen and ( min-width: 1168px ) {
-	  max-width: calc( 6 * ( 100vw / 12) - 28px );
+	  max-width: calc( 9 * ( 100vw / 12) - 28px );
   }
+
+`;
+
+const EntryFooter = styled.div`
+
+	margin: calc(0rem) 1rem 1rem;
+	line-height: 1em;
+	  
+	@media only screen and (min-width: 768px) {
+		margin: calc(0rem) calc(10% + 60px) calc(0.5rem);
+	}
+	
 `;

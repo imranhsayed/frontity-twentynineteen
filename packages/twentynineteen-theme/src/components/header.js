@@ -5,9 +5,9 @@ import Nav from "./nav";
 
 const Header = ( { state } ) => (
 	<>
-		<Container id="masthead" className="site-header">
-			<SiteBrandingContainer className="site-branding-container">
-				<SiteBranding className="site-branding">
+		<Container>
+			<SiteBrandingContainer>
+				<SiteBranding>
 					<StyledLink link="/">
 						<Title>{ state.frontity.title }</Title>
 					</StyledLink>
@@ -23,11 +23,26 @@ export default connect( Header );
 
 const SiteBrandingContainer = styled.div``;
 
-const SiteBranding = styled.div``;
+const SiteBranding = styled.div`
+
+	@media only screen and (min-width: 768px) {
+		margin: 0px calc(10% + 60px);
+	}
+
+`;
 
 const Container = styled.header`
   box-sizing: border-box;
   color: #fff;
+  margin: 0;
+  padding: 1em;
+
+  @media only screen and (min-width: 768px) {
+	  margin: 0px;
+	  padding: 3rem 0px 0px;
+  }
+
+
 `;
 
 const Title = styled.h1`
@@ -58,7 +73,8 @@ const Description = styled.p`
 	-webkit-hyphens: initial;
     -moz-hyphens: initial;
     -ms-hyphens: initial;
-    hyphens: initial;
+	hyphens: initial;
+	font-family: NonBreakingSpaceOverride, "Hoefler Text", "Baskerville Old Face", Garamond, "Times New Roman", serif;
     
     &:before {
 		content: "\\2014";
