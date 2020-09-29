@@ -1,4 +1,5 @@
 # Twenty Nineteen Frontity Theme Project :art:
+[![Download counter](https://img.shields.io/npm/dt/@frontity/twentynineteen-theme.svg)](https://www.npmjs.com/package/@frontity/twentynineteen-theme.svg)
 
 :fire: A WordPress Twenty Nineteen Theme Project in React for Frontity.
 
